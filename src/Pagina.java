@@ -13,8 +13,16 @@ public class Pagina {
     private int ejecutado = 0;
     private float time = 5000; //5s
 
-    public Pagina(boolean[] ApunNext) {
-        this.ApunNext = ApunNext;
+    public Pagina(int n) {
+        this.ApunNext = new boolean[n];
+        for (int i = 0; i < n; i++){
+            this.ApunNext[i]=false;
+        }
+        this.ApunNext[n]=true;
+    }
+    
+    public Pagina(boolean[] a) {
+        this.ApunNext = a;
     }
     
     public void getApunNextDisplay(){

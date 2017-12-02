@@ -17,6 +17,7 @@ import static java.lang.Thread.*;
 public class simulacion extends javax.swing.JFrame {
     int marcos=10;
     int listaNumProceso = 0;
+     
     
     
     /**
@@ -52,6 +53,8 @@ public class simulacion extends javax.swing.JFrame {
         ordenPagProc = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         processSeqCreateBtn = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel10 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         marco1 = new javax.swing.JTextField();
@@ -86,12 +89,14 @@ public class simulacion extends javax.swing.JFrame {
         jButton20 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        totalMarcosText = new javax.swing.JTextField();
+        marcosUsados = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         marcosDisplay = new javax.swing.JTextField();
-        jButton21 = new javax.swing.JButton();
+        MemoriaDisplay = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        virtualMemoryArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -115,7 +120,7 @@ public class simulacion extends javax.swing.JFrame {
 
         jLabel4.setText("Crear proceso :");
 
-        jLabel5.setText("Para especificar el orden secuencial:");
+        jLabel5.setText("Para especificar el orden no secuencial:");
 
         ordenPagProc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,6 +142,8 @@ public class simulacion extends javax.swing.JFrame {
                 processSeqCreateBtnActionPerformed(evt);
             }
         });
+
+        jLabel10.setText("jLabel10");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -168,6 +175,14 @@ public class simulacion extends javax.swing.JFrame {
                 .addGap(111, 111, 111)
                 .addComponent(jLabel1)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSeparator1)
+                .addGap(19, 19, 19))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel10)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,6 +202,10 @@ public class simulacion extends javax.swing.JFrame {
                     .addComponent(processSeqCreateBtn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel10)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -254,6 +273,7 @@ public class simulacion extends javax.swing.JFrame {
 
         jButton10.setText("Suspender");
 
+        marco6.setEditable(false);
         marco6.setText("Marco 1");
         marco6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -265,6 +285,7 @@ public class simulacion extends javax.swing.JFrame {
 
         jButton12.setText("Suspender");
 
+        marco7.setEditable(false);
         marco7.setText("Marco 1");
         marco7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -276,6 +297,7 @@ public class simulacion extends javax.swing.JFrame {
 
         jButton14.setText("Suspender");
 
+        marco8.setEditable(false);
         marco8.setText("Marco 1");
         marco8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -287,6 +309,7 @@ public class simulacion extends javax.swing.JFrame {
 
         jButton16.setText("Suspender");
 
+        marco9.setEditable(false);
         marco9.setText("Marco 1");
         marco9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -298,6 +321,7 @@ public class simulacion extends javax.swing.JFrame {
 
         jButton18.setText("Suspender");
 
+        marco10.setEditable(false);
         marco10.setText("Marco 1");
         marco10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -312,23 +336,25 @@ public class simulacion extends javax.swing.JFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Suspension de # de Proceso");
 
-        jLabel7.setText("Marcos totales: ");
+        jLabel7.setText("Marcos en uso: ");
 
-        totalMarcosText.addActionListener(new java.awt.event.ActionListener() {
+        marcosUsados.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        marcosUsados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                totalMarcosTextActionPerformed(evt);
+                marcosUsadosActionPerformed(evt);
             }
         });
 
         jLabel9.setText("Marcos:");
 
         marcosDisplay.setEditable(false);
+        marcosDisplay.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         marcosDisplay.setText("#");
 
-        jButton21.setText("Show Me");
-        jButton21.addMouseListener(new java.awt.event.MouseAdapter() {
+        MemoriaDisplay.setText("Show Me");
+        MemoriaDisplay.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton21MouseClicked(evt);
+                MemoriaDisplayMouseClicked(evt);
             }
         });
 
@@ -417,11 +443,11 @@ public class simulacion extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jLabel7)
-                        .addGap(18, 18, 18)
-                        .addComponent(totalMarcosText, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(marcosUsados)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton21)
+                        .addComponent(MemoriaDisplay)
                         .addGap(30, 30, 30))))
         );
         jPanel3Layout.setVerticalGroup(
@@ -487,14 +513,20 @@ public class simulacion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(totalMarcosText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton21))
-                .addContainerGap(71, Short.MAX_VALUE))
+                    .addComponent(MemoriaDisplay))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(marcosUsados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel3.setText("Memoria Virtual");
+
+        virtualMemoryArea.setEditable(false);
+        virtualMemoryArea.setColumns(20);
+        virtualMemoryArea.setRows(5);
+        jScrollPane1.setViewportView(virtualMemoryArea);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -504,13 +536,19 @@ public class simulacion extends javax.swing.JFrame {
                 .addGap(137, 137, 137)
                 .addComponent(jLabel3)
                 .addContainerGap(136, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -584,9 +622,9 @@ public class simulacion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_marco10ActionPerformed
 
-    private void totalMarcosTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalMarcosTextActionPerformed
+    private void marcosUsadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marcosUsadosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_totalMarcosTextActionPerformed
+    }//GEN-LAST:event_marcosUsadosActionPerformed
 
     private void processCreateBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_processCreateBtnMouseClicked
         // Creacion de proceso
@@ -611,7 +649,7 @@ public class simulacion extends javax.swing.JFrame {
             e++;
         }
         
-       
+        
         
         
         //Si la verificacion esta bien (no hay e = error), se crea el proceso:
@@ -641,7 +679,7 @@ public class simulacion extends javax.swing.JFrame {
                     System.out.println("f "+j+" = "+f[j]);
                     }
                     //Creamos la nueva pagina con el orden default 
-                    pags[i] = new Pagina(f);
+                    pags[i] = new Pagina(i);
                     System.out.println("pagina "+i);
                     pags[i].display();
                     //en este display sale bien el orden de ejecucion
@@ -668,6 +706,7 @@ public class simulacion extends javax.swing.JFrame {
         String poTexto = ordenPagProc.getText();
         String pTexto = numPagProc.getText();
         String[] stArray = poTexto.split(",");
+        System.out.println("starray length ="+stArray.length);
         int[] intArray = new int[stArray.length];
         int e=0; int i= 0; 
         int p; int num;
@@ -683,6 +722,7 @@ public class simulacion extends javax.swing.JFrame {
         //Convertimos el string array de los numeros del jtext en un array de ints
         for (i=0;i<stArray.length;i++){
                 intArray[i] = Integer.parseInt(stArray[i]);
+                System.out.println("intarray i="+intArray[i]);
                 //System.out.println("int de pos "+i+"es="+intArray[i] );
             }
         
@@ -690,40 +730,48 @@ public class simulacion extends javax.swing.JFrame {
             p = Integer.valueOf(pTexto);
             System.out.println("Paginas a crear: "+p);
             Pagina[] pags = new Pagina[p];
-            boolean[][] op = new boolean[p][];                          //array que me dice en indice (que corresponde a la pagina) cual es el orden de repeticion 
-            boolean[] orden = new boolean[intArray.length];             //array que tiene el orden de ejecucion de la pagina 
+            //boolean[][] op = new boolean[p][];                          //array que me dice en indice (que corresponde a la pagina) cual es el orden de repeticion 
+            boolean[] orden = new boolean[intArray.length]; 
             boolean[] f = new boolean[intArray.length];
-            //Inicializo el array de orden todo en falso para solo ponerlo true cuando le toca a una pagina de ser ejecutada
+            /*Inicializo el array de orden todo en falso para solo ponerlo true cuando le toca a una pagina de ser ejecutada
             for (i=0;i<intArray.length;i++){
                 orden[i]=false;
             }
-            //Para ver como es el array de ints
+            */
+            /*Para ver como es el array de ints
             System.out.println("\n ARRAY DE INTS \n");
             for (i=0;i<intArray.length;i++){
                 System.out.print("array int "+i+" = "+intArray[i]+"  ||| ");
             }
+            */
             
             //Verificacion: si le toca a la pagina i de ejecutar, se pone en el array orden, y una vez se ve
             //en cuales posiciones de todo el array se ejecuta, se crea la pagina. 
                 for (i = 0; i<p;i++){
-                    num = i;
-                    for (int j=i; j<intArray.length;j++){
+                    int number = i;
+                    //System.out.println("Number to compare is "+number);
+                    //Inicializo el array de orden todo en falso para solo ponerlo true cuando le toca a una pagina de ser ejecutada
+                    for (int k=0;k<intArray.length;k++){
+                        orden[k]=false;
+                    }
+                    
+                    for (int j=0; j<intArray.length;j++){
+                        //System.out.println("IntArray[ "+j+" ] = "+intArray[j]);
                         int n = (intArray[j]-1);
-                        if (num == n){
+                        //System.out.println("n: "+n+" |  num: "+number);
+                        if (number == n){
                             orden[j]=true;
+                            //System.out.println("orden j"+j+"="+orden[j]);
                         }
                     }
+                    
                     f = orden;
-                    pags[i]= new Pagina(f);
-                    System.out.println("pagina "+(i+1));
-                    pags[i].display();
-                    
-                    
-                    for (i=0;i<intArray.length;i++){
-                        orden[i]=false;
-                        System.out.print(orden[i]+" |");
+                    for (int l=0; l<f.length; l++){
+                        //System.out.println("f pos."+l+". = "+f[l]);
                     }
-                    System.out.println("\n reinicializacion terminada, lets start next?");
+                    pags[i]= new Pagina(f);
+                    pags[i].display();
+                    //System.out.println("\n reinicializacion terminada, lets start next?");
                     
                 }
                 
@@ -739,13 +787,14 @@ public class simulacion extends javax.swing.JFrame {
         
     }//GEN-LAST:event_processCreateBtnActionPerformed
 
-    private void jButton21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton21MouseClicked
+    private void MemoriaDisplayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MemoriaDisplayMouseClicked
        int m = Integer.valueOf(marcos);
+       boolean textShow = true;
         marcosDisplay.setText(String.valueOf(marcos));
         Thread textUpdate;
         textUpdate = new Thread (new Runnable(){
             public void run() {
-                while(true){
+                while(textShow){
                     
                         switch (m){
                     case 1:
@@ -825,12 +874,18 @@ public class simulacion extends javax.swing.JFrame {
                         
                     break;
                 }
-                    
+                   
                 }
             }    
         });
         textUpdate.start();
-    }//GEN-LAST:event_jButton21MouseClicked
+        try {
+            textUpdate.sleep(1000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(simulacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        textUpdate.suspend();
+    }//GEN-LAST:event_MemoriaDisplayMouseClicked
 
     /**
      * @param args the command line arguments
@@ -872,6 +927,7 @@ public class simulacion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton MemoriaDisplay;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -885,7 +941,6 @@ public class simulacion extends javax.swing.JFrame {
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -894,6 +949,7 @@ public class simulacion extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -905,6 +961,8 @@ public class simulacion extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField marco1;
     private javax.swing.JTextField marco10;
     private javax.swing.JTextField marco2;
@@ -916,10 +974,11 @@ public class simulacion extends javax.swing.JFrame {
     private javax.swing.JTextField marco8;
     private javax.swing.JTextField marco9;
     private javax.swing.JTextField marcosDisplay;
+    private javax.swing.JTextField marcosUsados;
     private javax.swing.JTextField numPagProc;
     private javax.swing.JTextField ordenPagProc;
     private javax.swing.JButton processCreateBtn;
     private javax.swing.JButton processSeqCreateBtn;
-    private javax.swing.JTextField totalMarcosText;
+    private javax.swing.JTextArea virtualMemoryArea;
     // End of variables declaration//GEN-END:variables
 }
