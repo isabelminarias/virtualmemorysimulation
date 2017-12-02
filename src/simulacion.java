@@ -42,6 +42,8 @@ public class simulacion extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         ordenPagProc = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        processSeqCreateBtn = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -99,10 +101,24 @@ public class simulacion extends javax.swing.JFrame {
 
         jLabel5.setText("Para especificar el orden secuencial:");
 
-        ordenPagProc.setText("Escribir el orden asi: 1,4,3,2,5 (o dejarlo en blanco)");
         ordenPagProc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ordenPagProcActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
+        jLabel8.setText("Escribir el orden asi: 1,4,3,2,5 (o dejarlo en blanco)");
+
+        processSeqCreateBtn.setText("Crear (secuencial)");
+        processSeqCreateBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                processSeqCreateBtnMouseClicked(evt);
+            }
+        });
+        processSeqCreateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                processSeqCreateBtnActionPerformed(evt);
             }
         });
 
@@ -114,24 +130,30 @@ public class simulacion extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(ordenPagProc, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(ordenPagProc, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(processSeqCreateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(143, 143, 143)
                                         .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel4)
                                         .addGap(18, 18, 18)
                                         .addComponent(numPagProc)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                                 .addComponent(processCreateBtn)))
-                        .addGap(19, 19, 19))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(19, 19, 19))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,7 +168,11 @@ public class simulacion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ordenPagProc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ordenPagProc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(processSeqCreateBtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -448,12 +474,12 @@ public class simulacion extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -522,59 +548,101 @@ public class simulacion extends javax.swing.JFrame {
         int e=0; int i= 0; int o=0;
         int p;
         String pTexto = numPagProc.getText();
+        listaNumProceso++;
+        
+        
+        //Checkeo de errores si no se introdujo un digito en el recuadro
+        for (i =0; i<pTexto.length();i++){
+            if (!Character.isDigit(pTexto.charAt(i))){
+                e++;
+                System.out.println("char at "+i+" is not digit");
+            }
+            
+        }
+        if (Integer.parseInt(pTexto)>10){
+            e++;
+        }
+        else if (Integer.parseInt(pTexto)<1){
+            e++;
+        }
+        
+       
+        
+        
+        //Si la verificacion esta bien (no hay e = error), se crea el proceso:
+        if (e == 0){
+            p = Integer.valueOf(pTexto);    //num de paginas del proceso
+            Pagina[] pags = new Pagina[p];  //Array de paginas del proceso
+            boolean[] ordenArray = new boolean[p];  //Array del orden en que se ejecutan las paginas
+            boolean[] f = new boolean[p];           //Array adicional 
+            //Inicializamos los dos arrays de orden en false todo
+            for (i = 0; i<p; i++){
+                    ordenArray[i]=false;
+                    f[i] = false;
+                    //System.out.println("ordarray "+i+" = "+ordenArray[i]);
+                }
+            //Como estamos sin secuencia especificada, el default 
+            for (i = 0; i<p;i++){
+                    System.out.println("convertimos a array[ "+i+" ] en true");
+                    ordenArray[i]=true;
+                    for (int j = 0; j<p; j++){
+                    System.out.print(" "+j+" = "+ordenArray[j]+" |" );
+                    //verificacion de que el array este como lo queremos
+                    }
+                    
+                    f = ordenArray;
+                    System.out.println("verificacion del f array");
+                    for (int j = 0; j<p; j++){
+                    System.out.println("f "+j+" = "+f[j]);
+                    }
+                    //Creamos la nueva pagina con el orden default 
+                    pags[i] = new Pagina(f);
+                    System.out.println("pagina "+i);
+                    pags[i].display();
+                    //en este display sale bien el orden de ejecucion
+                    ordenArray[i]=false;
+                    for (int j = 0; j<p; j++){
+                    System.out.print(" "+j+" = "+ordenArray[j]+" |" );
+                    //verificacion de que el array este como lo queremos
+                    }
+                }
+                //Creado el proceso aqui abajo, no sale el orden de ejecucion
+                Proceso proc = new Proceso(pags,listaNumProceso);
+                proc.display();
+            
+        }
+        
+        
+    }//GEN-LAST:event_processCreateBtnMouseClicked
+
+    private void processSeqCreateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processSeqCreateBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_processSeqCreateBtnActionPerformed
+
+    private void processSeqCreateBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_processSeqCreateBtnMouseClicked
         String poTexto = ordenPagProc.getText();
+        String pTexto = numPagProc.getText();
         String[] stArray = poTexto.split(",");
         int[] intArray = new int[stArray.length];
+        int e=0; int i= 0; 
+        int p;
         listaNumProceso++;
+        System.out.println("Proceso numero "+listaNumProceso);
         
         for (i =0; i<pTexto.length();i++){
             if (!Character.isDigit(pTexto.charAt(i))){
                 e++;
+                System.out.println("Error en "+i+" = "+pTexto.charAt(i));
             }
         }
         
-        //Separacion en array de cada numero del orden secuencial de las paginas
-        String check1 = "Escribir el orden asi: 1,4,3,2,5 (o dejarlo en blanco)";
-        String check2 = "";
-        if (ordenPagProc.getText() != check1 || 
-                ordenPagProc.getText() != check2
-                ){
-            
-            for (i=0;i<stArray.length;i++){
+        for (i=0;i<stArray.length;i++){
                 intArray[i] = Integer.parseInt(stArray[i]);
+                System.out.println("int de pos "+i+"es="+intArray[i] );
             }
-        }//de aqui sale un array
-        else{
-            o++; //numero que avisa que debe ser un orden default para las paginas del proceso
-        }
-        
-        
-        //Si la verificacion esta bien, se crea el proceso:
         if (e == 0){
-            p = Integer.valueOf(pTexto);    //paginas del proceso
+            p = Integer.valueOf(pTexto);
             Pagina[] pags = new Pagina[p];
-            //Inicializacion del array de paginas
-            for (i = 0; i<p;i++){
-                
-            }
-            
-            //si no hay orden secuencial especificado, inicializamos el proceso en if
-            if(o!=0){
-                int[] orden = new int[p];
-                int[] s = new int[1];
-                for (i = 0; i<p; i++){
-                    orden[i]= 1+i; //agregamos 1 para que comienze en 1 y termine en el numero de paginas total
-                }
-                
-                for (i = 0; i<p;i++){
-                    s[0]= orden[i];
-                    pags[i] = new Pagina(s);
-                }
-                //Creado el proceso aqui abajo
-                Proceso proc = new Proceso(pags,listaNumProceso);
-            }
-            //en caso de haber orden secuencial, inicializamos en else
-            else{
                 p = Integer.valueOf(pTexto);
                 int[][] op = new int[p][];          //array que me dice en indice (que corresponde a la pagina) cual es el orden de repeticion 
                 int[] opc = new int[p];             //array que tiene el orden de ejecucion de la pagina 
@@ -596,13 +664,9 @@ public class simulacion extends javax.swing.JFrame {
                 //Esto en caso de que el proceso trabaje mas de una vez una pagina, para que sepa el total de veces
                 //que va a correr una de sus paginas
                 Proceso proc = new Proceso(pags,stArray.length,listaNumProceso);
-            }
-            
-            
+                proc.display();
         }
-        
-        
-    }//GEN-LAST:event_processCreateBtnMouseClicked
+    }//GEN-LAST:event_processSeqCreateBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -668,6 +732,7 @@ public class simulacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -684,6 +749,7 @@ public class simulacion extends javax.swing.JFrame {
     private javax.swing.JTextField numPagProc;
     private javax.swing.JTextField ordenPagProc;
     private javax.swing.JButton processCreateBtn;
+    private javax.swing.JButton processSeqCreateBtn;
     private javax.swing.JTextField totalMarcosText;
     // End of variables declaration//GEN-END:variables
 }
