@@ -9,8 +9,10 @@
  * @author SAMSUNG_
  */
 public class simulacion extends javax.swing.JFrame {
-    public int marcos;
+    int marcos=10;
     int listaNumProceso = 0;
+    
+    
     /**
      * Creates new form simulacion
      */
@@ -46,39 +48,41 @@ public class simulacion extends javax.swing.JFrame {
         processSeqCreateBtn = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        marco1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
+        marco2 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jTextField3 = new javax.swing.JTextField();
+        marco3 = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jTextField4 = new javax.swing.JTextField();
+        marco4 = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
-        jTextField5 = new javax.swing.JTextField();
+        marco5 = new javax.swing.JTextField();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
-        jTextField6 = new javax.swing.JTextField();
+        marco6 = new javax.swing.JTextField();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
-        jTextField7 = new javax.swing.JTextField();
+        marco7 = new javax.swing.JTextField();
         jButton13 = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
-        jTextField8 = new javax.swing.JTextField();
+        marco8 = new javax.swing.JTextField();
         jButton15 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
-        jTextField9 = new javax.swing.JTextField();
+        marco9 = new javax.swing.JTextField();
         jButton17 = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
-        jTextField10 = new javax.swing.JTextField();
+        marco10 = new javax.swing.JTextField();
         jButton19 = new javax.swing.JButton();
         jButton20 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         totalMarcosText = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        marcosDisplay = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
 
@@ -92,6 +96,11 @@ public class simulacion extends javax.swing.JFrame {
         processCreateBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 processCreateBtnMouseClicked(evt);
+            }
+        });
+        processCreateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                processCreateBtnActionPerformed(evt);
             }
         });
 
@@ -142,18 +151,16 @@ public class simulacion extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(processSeqCreateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(143, 143, 143)
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(numPagProc)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addComponent(numPagProc)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(processCreateBtn)))
                         .addGap(19, 19, 19))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(111, 111, 111)
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,10 +187,11 @@ public class simulacion extends javax.swing.JFrame {
 
         jLabel2.setText("Memoria Principal");
 
-        jTextField1.setText("Marco 1");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        marco1.setEditable(false);
+        marco1.setText("Marco 1");
+        marco1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                marco1ActionPerformed(evt);
             }
         });
 
@@ -191,10 +199,10 @@ public class simulacion extends javax.swing.JFrame {
 
         jButton2.setText("Reanudar");
 
-        jTextField2.setText("Marco 1");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        marco2.setText("Marco 1");
+        marco2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                marco2ActionPerformed(evt);
             }
         });
 
@@ -202,10 +210,10 @@ public class simulacion extends javax.swing.JFrame {
 
         jButton4.setText("Suspender");
 
-        jTextField3.setText("Marco 1");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        marco3.setText("Marco 1");
+        marco3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                marco3ActionPerformed(evt);
             }
         });
 
@@ -213,10 +221,10 @@ public class simulacion extends javax.swing.JFrame {
 
         jButton6.setText("Suspender");
 
-        jTextField4.setText("Marco 1");
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        marco4.setText("Marco 1");
+        marco4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                marco4ActionPerformed(evt);
             }
         });
 
@@ -224,10 +232,10 @@ public class simulacion extends javax.swing.JFrame {
 
         jButton8.setText("Suspender");
 
-        jTextField5.setText("Marco 1");
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        marco5.setText("Marco 1");
+        marco5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                marco5ActionPerformed(evt);
             }
         });
 
@@ -235,10 +243,10 @@ public class simulacion extends javax.swing.JFrame {
 
         jButton10.setText("Suspender");
 
-        jTextField6.setText("Marco 1");
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        marco6.setText("Marco 1");
+        marco6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                marco6ActionPerformed(evt);
             }
         });
 
@@ -246,10 +254,10 @@ public class simulacion extends javax.swing.JFrame {
 
         jButton12.setText("Suspender");
 
-        jTextField7.setText("Marco 1");
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        marco7.setText("Marco 1");
+        marco7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                marco7ActionPerformed(evt);
             }
         });
 
@@ -257,10 +265,10 @@ public class simulacion extends javax.swing.JFrame {
 
         jButton14.setText("Suspender");
 
-        jTextField8.setText("Marco 1");
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        marco8.setText("Marco 1");
+        marco8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                marco8ActionPerformed(evt);
             }
         });
 
@@ -268,10 +276,10 @@ public class simulacion extends javax.swing.JFrame {
 
         jButton16.setText("Suspender");
 
-        jTextField9.setText("Marco 1");
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+        marco9.setText("Marco 1");
+        marco9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
+                marco9ActionPerformed(evt);
             }
         });
 
@@ -279,10 +287,10 @@ public class simulacion extends javax.swing.JFrame {
 
         jButton18.setText("Suspender");
 
-        jTextField10.setText("Marco 1");
-        jTextField10.addActionListener(new java.awt.event.ActionListener() {
+        marco10.setText("Marco 1");
+        marco10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField10ActionPerformed(evt);
+                marco10ActionPerformed(evt);
             }
         });
 
@@ -301,14 +309,15 @@ public class simulacion extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setText("Marcos:");
+
+        marcosDisplay.setEditable(false);
+        marcosDisplay.setText("#");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(131, 131, 131))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -322,120 +331,135 @@ public class simulacion extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton1))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(marco2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton4))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(marco3, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton6))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(marco4, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton8))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(marco5, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton10))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(marco6, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton12))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(marco7, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton14))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(marco8, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton15)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton16))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(marco9, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton17)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton18))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(marco10, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton19)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton20)))
+                                .addComponent(jButton20))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(marco1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(jButton2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(jLabel9)
+                                        .addGap(51, 51, 51)))
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(marcosDisplay)
+                                        .addGap(26, 26, 26))
+                                    .addComponent(jButton1))))
                         .addContainerGap())))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel9)
+                    .addComponent(marcosDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(marco1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(marco2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4)
                     .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(marco3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6)
                     .addComponent(jButton5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(marco4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton8)
                     .addComponent(jButton7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(marco5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton10)
                     .addComponent(jButton9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(marco6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton12)
                     .addComponent(jButton11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(marco7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton14)
                     .addComponent(jButton13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(marco8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton16)
                     .addComponent(jButton15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(marco9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton18)
                     .addComponent(jButton17))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(marco10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton20)
                     .addComponent(jButton19))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -444,7 +468,7 @@ public class simulacion extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(totalMarcosText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -479,7 +503,7 @@ public class simulacion extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -499,45 +523,45 @@ public class simulacion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ordenPagProcActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void marco1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marco1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_marco1ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void marco2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marco2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_marco2ActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void marco3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marco3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_marco3ActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void marco4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marco4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_marco4ActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void marco5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marco5ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_marco5ActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void marco6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marco6ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_marco6ActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void marco7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marco7ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_marco7ActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void marco8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marco8ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_marco8ActionPerformed
 
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+    private void marco9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marco9ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
+    }//GEN-LAST:event_marco9ActionPerformed
 
-    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
+    private void marco10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marco10ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField10ActionPerformed
+    }//GEN-LAST:event_marco10ActionPerformed
 
     private void totalMarcosTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalMarcosTextActionPerformed
         // TODO add your handling code here:
@@ -625,7 +649,7 @@ public class simulacion extends javax.swing.JFrame {
         String[] stArray = poTexto.split(",");
         int[] intArray = new int[stArray.length];
         int e=0; int i= 0; 
-        int p;
+        int p; int num;
         listaNumProceso++;
         System.out.println("Proceso numero "+listaNumProceso);
         
@@ -635,38 +659,65 @@ public class simulacion extends javax.swing.JFrame {
                 System.out.println("Error en "+i+" = "+pTexto.charAt(i));
             }
         }
-        
+        //Convertimos el string array de los numeros del jtext en un array de ints
         for (i=0;i<stArray.length;i++){
                 intArray[i] = Integer.parseInt(stArray[i]);
-                System.out.println("int de pos "+i+"es="+intArray[i] );
+                //System.out.println("int de pos "+i+"es="+intArray[i] );
             }
+        
         if (e == 0){
             p = Integer.valueOf(pTexto);
+            System.out.println("Paginas a crear: "+p);
             Pagina[] pags = new Pagina[p];
-                p = Integer.valueOf(pTexto);
-                int[][] op = new int[p][];          //array que me dice en indice (que corresponde a la pagina) cual es el orden de repeticion 
-                int[] opc = new int[p];             //array que tiene el orden de ejecucion de la pagina 
-                
-                for(i = 0; i < p; i++){
-                    int num = i + 1;
-                    for (int j = i; j < p; j++){
-                        if (intArray[j]==num){
-                            opc[i]=j;               //se coloca los indices de cada lugar que coincide el num pag
+            boolean[][] op = new boolean[p][];                          //array que me dice en indice (que corresponde a la pagina) cual es el orden de repeticion 
+            boolean[] orden = new boolean[intArray.length];             //array que tiene el orden de ejecucion de la pagina 
+            boolean[] f = new boolean[intArray.length];
+            //Inicializo el array de orden todo en falso para solo ponerlo true cuando le toca a una pagina de ser ejecutada
+            for (i=0;i<intArray.length;i++){
+                orden[i]=false;
+            }
+            //Para ver como es el array de ints
+            System.out.println("\n ARRAY DE INTS \n");
+            for (i=0;i<intArray.length;i++){
+                System.out.print("array int "+i+" = "+intArray[i]+"  ||| ");
+            }
+            
+            //Verificacion: si le toca a la pagina i de ejecutar, se pone en el array orden, y una vez se ve
+            //en cuales posiciones de todo el array se ejecuta, se crea la pagina. 
+                for (i = 0; i<p;i++){
+                    num = i;
+                    for (int j=i; j<intArray.length;j++){
+                        int n = (intArray[j]-1);
+                        if (num == n){
+                            orden[j]=true;
                         }
                     }
-                    op[i] = opc;
+                    f = orden;
+                    pags[i]= new Pagina(f);
+                    System.out.println("pagina "+(i+1));
+                    pags[i].display();
+                    
+                    
+                    for (i=0;i<intArray.length;i++){
+                        orden[i]=false;
+                        System.out.print(orden[i]+" |");
+                    }
+                    System.out.println("\n reinicializacion terminada, lets start next?");
                     
                 }
                 
-                for (i = 0; i <p; i++){
-                    pags[i]= new Pagina(op[i]);
-                }
+                
                 //Esto en caso de que el proceso trabaje mas de una vez una pagina, para que sepa el total de veces
                 //que va a correr una de sus paginas
-                Proceso proc = new Proceso(pags,stArray.length,listaNumProceso);
-                proc.display();
+                Proceso proc = new Proceso(pags,intArray.length,listaNumProceso);
         }
     }//GEN-LAST:event_processSeqCreateBtnMouseClicked
+
+    private void processCreateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processCreateBtnActionPerformed
+        marcosDisplay.setText(String.valueOf(marcos));
+        
+        
+    }//GEN-LAST:event_processCreateBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -700,6 +751,9 @@ public class simulacion extends javax.swing.JFrame {
             public void run() {
                 
                 new simulacion().setVisible(true);
+                
+                
+                
             }
         });
     }
@@ -733,19 +787,21 @@ public class simulacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField marco1;
+    private javax.swing.JTextField marco10;
+    private javax.swing.JTextField marco2;
+    private javax.swing.JTextField marco3;
+    private javax.swing.JTextField marco4;
+    private javax.swing.JTextField marco5;
+    private javax.swing.JTextField marco6;
+    private javax.swing.JTextField marco7;
+    private javax.swing.JTextField marco8;
+    private javax.swing.JTextField marco9;
+    private javax.swing.JTextField marcosDisplay;
     private javax.swing.JTextField numPagProc;
     private javax.swing.JTextField ordenPagProc;
     private javax.swing.JButton processCreateBtn;

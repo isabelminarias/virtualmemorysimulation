@@ -24,6 +24,7 @@ public class Pagina {
     }
     
     
+    
     public void display(){
         
         System.out.println("Ejecutado "+ejecutado+" veces hasta ahora");
@@ -35,13 +36,31 @@ public class Pagina {
         System.out.println("...============...");
     }
 
-    
-    
-    
-    
-    
-    
-    
+    public boolean[] getApunNext() {
+        return ApunNext;
+    }
+
+    public void setApunNext(boolean[] ApunNext) {
+        this.ApunNext = ApunNext;
+    }
+
+    public int getEjecutado() {
+        return ejecutado;
+    }
+
+    public void setEjecutado(int ejecutado) {
+        this.ejecutado = ejecutado;
+    }
+
+    public float getTime() {
+        return time;
+    }
+
+    public void setTime(float time) {
+        this.time = time;
+    }
+
+       
 }
 
 

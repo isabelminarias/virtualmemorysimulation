@@ -143,7 +143,7 @@ public class start extends javax.swing.JFrame {
             //  set marcos de paginas de manera global???  //
             
             simulacion s = new simulacion();
-            this.fmarcos = marcos;
+            s.setMarcos(marcos);
             s.setVisible(true);
             
         };
