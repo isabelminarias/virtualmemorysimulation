@@ -1,3 +1,9 @@
+
+import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import static java.lang.Thread.*;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -83,6 +89,7 @@ public class simulacion extends javax.swing.JFrame {
         totalMarcosText = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         marcosDisplay = new javax.swing.JTextField();
+        jButton21 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
 
@@ -199,6 +206,7 @@ public class simulacion extends javax.swing.JFrame {
 
         jButton2.setText("Reanudar");
 
+        marco2.setEditable(false);
         marco2.setText("Marco 1");
         marco2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,6 +218,7 @@ public class simulacion extends javax.swing.JFrame {
 
         jButton4.setText("Suspender");
 
+        marco3.setEditable(false);
         marco3.setText("Marco 1");
         marco3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -221,6 +230,7 @@ public class simulacion extends javax.swing.JFrame {
 
         jButton6.setText("Suspender");
 
+        marco4.setEditable(false);
         marco4.setText("Marco 1");
         marco4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -232,6 +242,7 @@ public class simulacion extends javax.swing.JFrame {
 
         jButton8.setText("Suspender");
 
+        marco5.setEditable(false);
         marco5.setText("Marco 1");
         marco5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -314,6 +325,13 @@ public class simulacion extends javax.swing.JFrame {
         marcosDisplay.setEditable(false);
         marcosDisplay.setText("#");
 
+        jButton21.setText("Show Me");
+        jButton21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton21MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -321,12 +339,6 @@ public class simulacion extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel7)
-                        .addGap(18, 18, 18)
-                        .addComponent(totalMarcosText, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -402,7 +414,15 @@ public class simulacion extends javax.swing.JFrame {
                                         .addComponent(marcosDisplay)
                                         .addGap(26, 26, 26))
                                     .addComponent(jButton1))))
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
+                        .addComponent(totalMarcosText, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton21)
+                        .addGap(30, 30, 30))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -467,8 +487,9 @@ public class simulacion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(totalMarcosText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(74, Short.MAX_VALUE))
+                    .addComponent(totalMarcosText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton21))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -714,10 +735,102 @@ public class simulacion extends javax.swing.JFrame {
     }//GEN-LAST:event_processSeqCreateBtnMouseClicked
 
     private void processCreateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processCreateBtnActionPerformed
-        marcosDisplay.setText(String.valueOf(marcos));
         
         
     }//GEN-LAST:event_processCreateBtnActionPerformed
+
+    private void jButton21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton21MouseClicked
+       int m = Integer.valueOf(marcos);
+        marcosDisplay.setText(String.valueOf(marcos));
+        Thread textUpdate;
+        textUpdate = new Thread (new Runnable(){
+            public void run() {
+                while(true){
+                    
+                        switch (m){
+                    case 1:
+                        
+                        
+                        marco2.setBackground(Color.black);
+                        marco3.setBackground(Color.black);
+                        marco4.setBackground(Color.black);
+                        marco5.setBackground(Color.black);
+                        marco6.setBackground(Color.black);
+                        marco7.setBackground(Color.black);
+                        marco8.setBackground(Color.black);
+                        marco9.setBackground(Color.black);
+                        marco10.setBackground(Color.black);
+                    break;
+                    case 2: 
+                        marco3.setBackground(Color.black);
+                        marco4.setBackground(Color.black);
+                        marco5.setBackground(Color.black);
+                        marco6.setBackground(Color.black);
+                        marco7.setBackground(Color.black);
+                        marco8.setBackground(Color.black);
+                        marco9.setBackground(Color.black);
+                        marco10.setBackground(Color.black);
+                    break;
+                    case 3:
+                        
+                        marco4.setBackground(Color.black);
+                        marco5.setBackground(Color.black);
+                        marco6.setBackground(Color.black);
+                        marco7.setBackground(Color.black);
+                        marco8.setBackground(Color.black);
+                        marco9.setBackground(Color.black);
+                        marco10.setBackground(Color.black);
+                    break;
+                    case 4: 
+                    
+                        marco5.setBackground(Color.black);
+                        marco6.setBackground(Color.black);
+                        marco7.setBackground(Color.black);
+                        marco8.setBackground(Color.black);
+                        marco9.setBackground(Color.black);
+                        marco10.setBackground(Color.black);
+                    break;
+                    case 5:
+                    
+                        marco6.setBackground(Color.black);
+                        marco7.setBackground(Color.black);
+                        marco8.setBackground(Color.black);
+                        marco9.setBackground(Color.black);
+                        marco10.setBackground(Color.black);
+                    break;
+                    case 6:
+                        
+                        marco7.setBackground(Color.black);
+                        marco8.setBackground(Color.black);
+                        marco9.setBackground(Color.black);
+                        marco10.setBackground(Color.black);
+                    break;
+                    case 7:
+                        
+                        marco8.setBackground(Color.black);
+                        marco9.setBackground(Color.black);
+                        marco10.setBackground(Color.black);
+                    break;
+                    case 8:
+                        
+                        marco9.setBackground(Color.black);
+                        marco10.setBackground(Color.black);
+                    break;
+                    case 9:
+                        
+                        
+                        marco10.setBackground(Color.black);
+                    break;
+                    case 10:
+                        
+                    break;
+                }
+                    
+                }
+            }    
+        });
+        textUpdate.start();
+    }//GEN-LAST:event_jButton21MouseClicked
 
     /**
      * @param args the command line arguments
@@ -772,6 +885,7 @@ public class simulacion extends javax.swing.JFrame {
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
+    private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
