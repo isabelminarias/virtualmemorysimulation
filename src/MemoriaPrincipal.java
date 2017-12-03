@@ -12,10 +12,11 @@ public class MemoriaPrincipal {
     private Pagina[] pila = new Pagina[100];
     private Pagina[] enEjecucion;
     private int apunPila = 0;
-    private int apunEjec; 
+    private int apunEjec = 0; 
 
     public MemoriaPrincipal(int marcos) {
         this.enEjecucion = new Pagina[marcos];
+        System.out.println("array de "+marcos+" marcos");
     }
     
     public void addPila(Pagina p){

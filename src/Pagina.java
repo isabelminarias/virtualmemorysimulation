@@ -38,6 +38,7 @@ public class Pagina extends Thread{
         this.idP = idP;
     }
     
+    
     public void getApunNextDisplay(){
         for (int i = 0; i<ApunNext.length;i++){
             System.out.print(ApunNext[i] +" |");
@@ -110,6 +111,33 @@ public class Pagina extends Thread{
         
         return line;
     }
+
+    public int getIdP() {
+        return idP;
+    }
+
+    public void setIdP(int idP) {
+        this.idP = idP;
+    }
+
+    public int getExec() {
+        return exec;
+    }
+
+    public void setExec(int exec) {
+        this.exec = exec;
+    }
+
+    public int getIdPage() {
+        id = Integer.valueOf(this.id);
+        return id;
+    }
+
+    public void setIdPage(int id) {
+        this.id = id;
+    }
+    
+    
 }
 
 

@@ -15,6 +15,7 @@ public class Proceso {
     private int pagsTotal;  //para saber si se sigue procesando o ya termino (con pag secuencial)
     private int id; 
     private int[] orden;
+    private Pagina[] pOrdenados;
 
     public Proceso(Pagina[] p, int id) {
         this.p = p;
@@ -26,13 +27,23 @@ public class Proceso {
         }
     }
     
-    public Proceso(Pagina[] p,int pagsTotal,int id, int[] orden) {
+    public Proceso(Pagina[] p,int id, int[] orden) {
         this.p = p;
-        this.pagsTotal = pagsTotal;
+        this.pagsTotal = orden.length;
         this.id = id;
         this.orden = orden;
+        
+        pOrdenados = new Pagina [orden.length];
+        for (int i = 0; i < orden.length; i++){
+            pOrdenados[i]=p[orden[i]];
+        }
     }
-
+    
+    public void displayPagOrdenado(){
+        for (int i = 0; i < orden.length; i++){
+            pOrdenados[i].display();
+        }
+    }
 
     public Pagina[] getP() {
         return p;
@@ -74,6 +85,46 @@ public class Proceso {
         }
         line+="\n";
         return line;
+    }
+
+    public int getPagina() {
+        return pagina;
+    }
+
+    public void setPagina(int pagina) {
+        this.pagina = pagina;
+    }
+
+    public int getPagsTotal() {
+        return pagsTotal;
+    }
+
+    public void setPagsTotal(int pagsTotal) {
+        this.pagsTotal = pagsTotal;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int[] getOrden() {
+        return orden;
+    }
+
+    public void setOrden(int[] orden) {
+        this.orden = orden;
+    }
+
+    public Pagina[] getpOrdenados() {
+        return pOrdenados;
+    }
+
+    public void setpOrdenados(Pagina[] pOrdenados) {
+        this.pOrdenados = pOrdenados;
     }
     
     

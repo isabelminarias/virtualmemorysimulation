@@ -20,7 +20,7 @@ public class simulacion extends javax.swing.JFrame {
     int listaNumProceso = -1;
     String[] mVirtual;
     Proceso[] procesos;
-    MemoriaPrincipal MP = new MemoriaPrincipal(marcos);
+    MemoriaPrincipal MP = new MemoriaPrincipal(10);
      
     
     
@@ -711,6 +711,7 @@ public class simulacion extends javax.swing.JFrame {
         listaNumProceso++;
         System.out.println("Proceso numero "+listaNumProceso);
         
+        
         for (i =0; i<pTexto.length();i++){
             if (!Character.isDigit(pTexto.charAt(i))){
                 e++;
@@ -735,14 +736,14 @@ public class simulacion extends javax.swing.JFrame {
             for (i=0;i<intArray.length;i++){
                 orden[i]=false;
             }
-            
+            /*
             //Para ver como es el array de ints
             System.out.println("orden:");
             for (int c=0;c<intArray.length;c++){
                 System.out.print(intArray[c]+" |");
             }
             System.out.println("");
-            
+            */
             
             //Verificacion: si le toca a la pagina i de ejecutar, se pone en el array orden, y una vez se ve
             //en cuales posiciones de todo el array se ejecuta, se crea la pagina. 
@@ -771,23 +772,23 @@ public class simulacion extends javax.swing.JFrame {
                     }
                     f = orden;
                     for (int l=0; l<f.length; l++){
-                        System.out.println("f pos."+l+". = "+f[l]);
+                        //System.out.println("f pos."+l+". = "+f[l]);
                     }
                     
                     Pagina trial = new Pagina(f,cont,lq,listaNumProceso);
-                    System.out.println("trial pagina");
+                    //System.out.println("trial pagina");
                     //trial.getApunNextDisplay();
                     pags[lq]= trial;
                     //pags[lq].setApunNext(trial.getApunNext());
-                    pags[lq].display();
+                    //pags[lq].display();
                     //System.out.print("Pagina "+lq+"array booleano: ");
                     //pags[lq].getApunNextDisplay();
                     //System.out.println("");
                     //System.out.println("\n reinicializacion terminada, lets start next?");
-                    System.out.println("\n lq="+lq);
+                    //System.out.println("\n lq="+lq);
                     
                 }
-                System.out.println("");
+                /*System.out.println("");
                 System.out.println("=======");
                 System.out.println("");
                 
@@ -799,11 +800,13 @@ public class simulacion extends javax.swing.JFrame {
                 
                 System.out.println("");
                 System.out.println("=======");
-                System.out.println("");
+                System.out.println(""); */
                 //Esto en caso de que el proceso trabaje mas de una vez una pagina, para que sepa el total de veces
                 //que va a correr una de sus paginas
-                Proceso proc = new Proceso(pags,intArray.length,listaNumProceso,intArray);
+                Proceso proc = new Proceso(pags,listaNumProceso,intArray);
                 proc.display();
+                proc.displayPagOrdenado();
+                
                 virtualMemoryArea.append(proc.getText());
                 //procesos[listaNumProceso]=proc;
                 for (int k = 0; k<pags.length;k++){
@@ -826,7 +829,7 @@ public class simulacion extends javax.swing.JFrame {
        marcosDisplay.setText(String.valueOf(marcos));
        JTextField[] marcosFields = new JTextField[m];
        boolean[] avail = new boolean[m];     
-        
+       MP.setEnEjecucion(new Pagina[marcos]);
         
         Thread textUpdate;
         textUpdate = new Thread (new Runnable(){
@@ -1081,7 +1084,11 @@ public class simulacion extends javax.swing.JFrame {
                 for (int i = 0; i < m; i++){
                     if (avail[i]){
                         MP.addEjec(MP.pushPila());
-                        marcosFields[i].setText(String.valueOf(MP.getPaginaEjec(i).getId()));
+                        Pagina[] e = MP.getEnEjecucion();
+                        System.out.println("===\n ejecutando #"+i+":");
+                        System.out.println("P #"+e[i].getIdP()+" Pag #"+e[i].getIdPage());
+                        e[i].display();
+                        marcosFields[i].setText("P #"+e[i].getIdP()+" Pag #"+e[i].getIdPage());
                     }
                     
                 }
@@ -1132,7 +1139,7 @@ public class simulacion extends javax.swing.JFrame {
             public void run() {
                 
                 new simulacion().setVisible(true);
-                
+                MemoriaPrincipal MP;
                 
                 
             }
