@@ -54,7 +54,6 @@ public class simulacion extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         processSeqCreateBtn = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel10 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         marco1 = new javax.swing.JTextField();
@@ -143,8 +142,6 @@ public class simulacion extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setText("jLabel10");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -179,10 +176,6 @@ public class simulacion extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jSeparator1)
                 .addGap(19, 19, 19))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel10)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,8 +197,6 @@ public class simulacion extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel10)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -692,7 +683,7 @@ public class simulacion extends javax.swing.JFrame {
                 //Creado el proceso aqui abajo, no sale el orden de ejecucion
                 Proceso proc = new Proceso(pags,listaNumProceso);
                 proc.display();
-            
+                virtualMemoryArea.append(proc.getText());
         }
         
         
@@ -709,7 +700,7 @@ public class simulacion extends javax.swing.JFrame {
         System.out.println("starray length ="+stArray.length);
         int[] intArray = new int[stArray.length];
         int e=0; int i= 0; 
-        int p; int num;
+        int p; 
         listaNumProceso++;
         System.out.println("Proceso numero "+listaNumProceso);
         
@@ -722,7 +713,7 @@ public class simulacion extends javax.swing.JFrame {
         //Convertimos el string array de los numeros del jtext en un array de ints
         for (i=0;i<stArray.length;i++){
                 intArray[i] = Integer.parseInt(stArray[i]);
-                System.out.println("intarray i="+intArray[i]);
+                //System.out.println("intarray i="+intArray[i]);
                 //System.out.println("int de pos "+i+"es="+intArray[i] );
             }
         
@@ -732,28 +723,27 @@ public class simulacion extends javax.swing.JFrame {
             Pagina[] pags = new Pagina[p];
             //boolean[][] op = new boolean[p][];                          //array que me dice en indice (que corresponde a la pagina) cual es el orden de repeticion 
             boolean[] orden = new boolean[intArray.length]; 
-            boolean[] f = new boolean[intArray.length];
-            /*Inicializo el array de orden todo en falso para solo ponerlo true cuando le toca a una pagina de ser ejecutada
+            boolean[] f;
+            //Inicializo el array de orden todo en falso para solo ponerlo true cuando le toca a una pagina de ser ejecutada
             for (i=0;i<intArray.length;i++){
                 orden[i]=false;
             }
-            */
-            /*Para ver como es el array de ints
-            System.out.println("\n ARRAY DE INTS \n");
+            
+            //Para ver como es el array de ints
+            //System.out.println("\n ARRAY DE INTS \n");
             for (i=0;i<intArray.length;i++){
-                System.out.print("array int "+i+" = "+intArray[i]+"  ||| ");
+                //System.out.print("array int "+i+" = "+intArray[i]+"  ||| ");
             }
-            */
+            
             
             //Verificacion: si le toca a la pagina i de ejecutar, se pone en el array orden, y una vez se ve
             //en cuales posiciones de todo el array se ejecuta, se crea la pagina. 
                 for (i = 0; i<p;i++){
                     int number = i;
+                    int cont =0;
                     //System.out.println("Number to compare is "+number);
                     //Inicializo el array de orden todo en falso para solo ponerlo true cuando le toca a una pagina de ser ejecutada
-                    for (int k=0;k<intArray.length;k++){
-                        orden[k]=false;
-                    }
+                    
                     
                     for (int j=0; j<intArray.length;j++){
                         //System.out.println("IntArray[ "+j+" ] = "+intArray[j]);
@@ -761,26 +751,35 @@ public class simulacion extends javax.swing.JFrame {
                         //System.out.println("n: "+n+" |  num: "+number);
                         if (number == n){
                             orden[j]=true;
+                            cont++;
                             //System.out.println("orden j"+j+"="+orden[j]);
                         }
+                        else{
+                            orden[j]=false;
+                        }
                     }
-                    
+                    for (int m=0;m<orden.length;m++){
+                        System.out.println("orden i."+m+". ="+orden[m]);
+                    }
                     f = orden;
                     for (int l=0; l<f.length; l++){
-                        //System.out.println("f pos."+l+". = "+f[l]);
+                        System.out.println("f pos."+l+". = "+f[l]);
                     }
-                    pags[i]= new Pagina(f);
+                    pags[i]= new Pagina(f,cont);
                     //pags[i].display();
                     pags[i].getApunNextDisplay();
+                    System.out.println("");
                     //System.out.println("\n reinicializacion terminada, lets start next?");
                     
+                    
                 }
-                
+                pags[0].getApunNextDisplay();
                 
                 //Esto en caso de que el proceso trabaje mas de una vez una pagina, para que sepa el total de veces
                 //que va a correr una de sus paginas
                 Proceso proc = new Proceso(pags,intArray.length,listaNumProceso);
                 proc.display();
+                virtualMemoryArea.append(proc.getText());
         }
     }//GEN-LAST:event_processSeqCreateBtnMouseClicked
 
@@ -951,7 +950,6 @@ public class simulacion extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

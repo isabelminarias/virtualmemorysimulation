@@ -9,5 +9,5 @@
  * @author SAMSUNG_
  */
 public class ColaMP {
-    private 
+    
 }

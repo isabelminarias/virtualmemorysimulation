@@ -10,8 +10,10 @@
  */
 public class Pagina {
     private boolean[] ApunNext;
-    private int ejecutado = 0;
+    private int ejecutado = 0;  //cuantas veces se ha ejecutado la pagina en mem principal
+    private int exec;           //cuantas veces hay que ejecutarla
     private float time = 5000; //5s
+    private int id;
 
     public Pagina(int n, int p) {
         ApunNext = new boolean[p];
@@ -19,10 +21,13 @@ public class Pagina {
             this.ApunNext[i]=false;
         }
         this.ApunNext[n]=true;
+        this.id = n;
+        this.exec=1;
     }
     
-    public Pagina(boolean[] a) {
+    public Pagina(boolean[] a, int e) {
         this.ApunNext = a;
+        this.exec = e;
     }
     
     public void getApunNextDisplay(){
@@ -35,7 +40,7 @@ public class Pagina {
     
     
     public void display(){
-        
+        System.out.println("");
         System.out.println("Ejecutado "+ejecutado+" veces hasta ahora");
         System.out.println("Momentos en los que se debe ejecutar:");
         for (int i = 0; i < ApunNext.length; i++){
@@ -68,8 +73,22 @@ public class Pagina {
     public void setTime(float time) {
         this.time = time;
     }
-
-       
+    
+    public String getText(int pT){
+        String line;
+        
+        line = "P( "+id+" )[ "+ejecutado+" /"+pT+" ]";
+        
+        return line;
+    }
+    
+    public String getText(){
+        String line;
+        
+        line = "P( "+id+" )[ "+ejecutado+" ] ~";
+        
+        return line;
+    }
 }
 
 

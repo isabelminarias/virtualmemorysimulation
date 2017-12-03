@@ -62,5 +62,16 @@ public class Proceso {
         }
     }
     
+    public String getText(){
+        String line; 
+        
+        line = "Proceso "+id+" | ";
+        for (int i = 0; i< p.length; i++){
+            line+=p[i].getText();
+        }
+        line+="\n";
+        return line;
+    }
+    
 }
 
