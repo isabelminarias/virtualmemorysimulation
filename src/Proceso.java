@@ -20,6 +20,10 @@ public class Proceso {
         this.p = p;
         this.id = id;
         this.pagsTotal = p.length;
+        this.orden = new int[p.length];
+        for (int i = 0; i < p.length; i++){
+            orden[i]=i;
+        }
     }
     
     public Proceso(Pagina[] p,int pagsTotal,int id, int[] orden) {
@@ -29,10 +33,6 @@ public class Proceso {
         this.orden = orden;
     }
 
-    public Proceso(Pagina[] p, boolean estado) {
-        this.p = p;
-        this.estado = estado;
-    }
 
     public Pagina[] getP() {
         return p;
@@ -75,6 +75,7 @@ public class Proceso {
         line+="\n";
         return line;
     }
+    
     
 }
 

@@ -1,3 +1,7 @@
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,14 +12,15 @@
  *
  * @author SAMSUNG_
  */
-public class Pagina {
+public class Pagina extends Thread{
     private boolean[] ApunNext;
     private int ejecutado = 0;  //cuantas veces se ha ejecutado la pagina en mem principal
     private int exec;           //cuantas veces hay que ejecutarla
-    private float time = 5000; //5s
+    private long time = 5000; //5s
     private int id;
+    private int idP;
 
-    public Pagina(int n, int p) {
+    public Pagina(int n, int p, int idP) {
         ApunNext = new boolean[p];
         for (int i = 0; i < n; i++){
             this.ApunNext[i]=false;
@@ -23,12 +28,14 @@ public class Pagina {
         this.ApunNext[n]=true;
         this.id = n;
         this.exec=1;
+        this.idP = idP;
     }
     
-    public Pagina(boolean[] a, int e, int id) {
+    public Pagina(boolean[] a, int e, int id, int idP) {
         this.ApunNext = a;
         this.exec = e;
         this.id = id;
+        this.idP = idP;
     }
     
     public void getApunNextDisplay(){
@@ -37,6 +44,19 @@ public class Pagina {
         }
         System.out.println("");
     }
+
+    @Override
+    public synchronized void start() {
+        try {
+            sleep(time);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Pagina.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ejecutado++;
+        
+    }
+
+    
     
     
     
@@ -71,7 +91,7 @@ public class Pagina {
         return time;
     }
 
-    public void setTime(float time) {
+    public void setTime(long time) {
         this.time = time;
     }
     

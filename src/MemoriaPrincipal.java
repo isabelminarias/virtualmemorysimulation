@@ -9,22 +9,31 @@
  * @author SAMSUNG_
  */
 public class MemoriaPrincipal {
-    private Proceso[] pila = new Proceso[100];
-    private Proceso[] enEjecucion;
+    private Pagina[] pila = new Pagina[100];
+    private Pagina[] enEjecucion;
     private int apunPila = 0;
     private int apunEjec; 
 
     public MemoriaPrincipal(int marcos) {
-        this.enEjecucion = new Proceso[marcos];
+        this.enEjecucion = new Pagina[marcos];
     }
     
-    public void addPila(Proceso p){
+    public void addPila(Pagina p){
         pila[apunPila] = p;
         apunPila++;
     }
     
-    public Proceso pushPila(){
-        Proceso p = pila[0];
+    public Pagina getPaginaEjec(int i){
+        Pagina p;
+        
+        if(enEjecucion[i]!=null){
+            p = enEjecucion[i];
+            return p;
+        }
+    }
+    
+    public Pagina pushPila(){
+        Pagina p = pila[0];
         for (int i = 0; i<apunPila; i++){
             if (pila[i+1]!=null){
                 pila[i]= pila[i+1];
@@ -36,20 +45,40 @@ public class MemoriaPrincipal {
         }
         return p;
     }
+    
+    public void addEjec(Pagina p){
+        enEjecucion[apunEjec] = p;
+        apunEjec++;
+    }
+    
+    public Pagina pushEjec(){
+        Pagina p = enEjecucion[0];
+        for (int i = 0; i<apunEjec; i++){
+            if (enEjecucion[i+1]!=null){
+                enEjecucion[i]= enEjecucion[i+1];
+            }
+            else{
+                enEjecucion[i]=null;
+            }
+            
+        }
+        return p;
+    }
+    
 
-    public Proceso[] getPila() {
+    public Pagina[] getPila() {
         return pila;
     }
 
-    public void setPila(Proceso[] pila) {
+    public void setPila(Pagina[] pila) {
         this.pila = pila;
     }
 
-    public Proceso[] getEnEjecucion() {
+    public Pagina[] getEnEjecucion() {
         return enEjecucion;
     }
 
-    public void setEnEjecucion(Proceso[] enEjecucion) {
+    public void setEnEjecucion(Pagina[] enEjecucion) {
         this.enEjecucion = enEjecucion;
     }
 

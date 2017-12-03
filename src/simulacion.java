@@ -4,6 +4,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static java.lang.Thread.*;
+import javax.swing.JTextField;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,10 +16,11 @@ import static java.lang.Thread.*;
  * @author SAMSUNG_
  */
 public class simulacion extends javax.swing.JFrame {
-    int marcos=10;
+    int marcos;
     int listaNumProceso = -1;
     String[] mVirtual;
     Proceso[] procesos;
+    MemoriaPrincipal MP = new MemoriaPrincipal(marcos);
      
     
     
@@ -344,7 +346,8 @@ public class simulacion extends javax.swing.JFrame {
         marcosDisplay.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         marcosDisplay.setText("#");
 
-        MemoriaDisplay.setText("Show Me");
+        MemoriaDisplay.setBackground(new java.awt.Color(255, 204, 204));
+        MemoriaDisplay.setText("Start");
         MemoriaDisplay.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 MemoriaDisplayMouseClicked(evt);
@@ -358,90 +361,87 @@ public class simulacion extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(marco2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton4))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(marco3, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton6))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(marco4, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton8))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(marco5, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton10))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(marco6, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton12))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(marco7, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton14))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(marco8, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton16))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(marco9, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton18))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(marco10, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton20))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(marco1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(marco2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton4))
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jButton2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(marco3, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton6))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(marco4, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton8))
+                                .addComponent(jLabel9)
+                                .addGap(51, 51, 51)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(marco5, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton10))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(marco6, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton12))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(marco7, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton13)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton14))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(marco8, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton15)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton16))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(marco9, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton17)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton18))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(marco10, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton19)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton20))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(marco1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(jButton2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addGap(51, 51, 51)))
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(marcosDisplay)
-                                        .addGap(26, 26, 26))
-                                    .addComponent(jButton1))))
-                        .addContainerGap())
+                                .addComponent(marcosDisplay)
+                                .addGap(26, 26, 26))
+                            .addComponent(jButton1)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(marcosUsados)
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(MemoriaDisplay)
-                        .addGap(30, 30, 30))))
+                        .addComponent(MemoriaDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -503,12 +503,13 @@ public class simulacion extends javax.swing.JFrame {
                     .addComponent(jButton19))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(marcosUsados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(MemoriaDisplay))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(marcosUsados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -528,7 +529,7 @@ public class simulacion extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(137, 137, 137)
                 .addComponent(jLabel3)
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addContainerGap(181, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
@@ -554,8 +555,7 @@ public class simulacion extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -672,7 +672,7 @@ public class simulacion extends javax.swing.JFrame {
                     System.out.println("f "+j+" = "+f[j]);
                     }
                     //Creamos la nueva pagina con el orden default 
-                    pags[i] = new Pagina(i,p);
+                    pags[i] = new Pagina(i,p,listaNumProceso);
                     //System.out.println("pagina "+i);
                     pags[i].display();
                     //en este display sale bien el orden de ejecucion
@@ -687,6 +687,10 @@ public class simulacion extends javax.swing.JFrame {
                 proc.display();
                 virtualMemoryArea.append(proc.getText());
                 //procesos[listaNumProceso-1]=proc;
+                for (int k = 0; k<pags.length;k++){
+                    Pagina[] pila = proc.getP();
+                    MP.addPila(pila[k]);
+                }
         }
         
         
@@ -770,7 +774,7 @@ public class simulacion extends javax.swing.JFrame {
                         System.out.println("f pos."+l+". = "+f[l]);
                     }
                     
-                    Pagina trial = new Pagina(f,cont,lq);
+                    Pagina trial = new Pagina(f,cont,lq,listaNumProceso);
                     System.out.println("trial pagina");
                     //trial.getApunNextDisplay();
                     pags[lq]= trial;
@@ -802,6 +806,10 @@ public class simulacion extends javax.swing.JFrame {
                 proc.display();
                 virtualMemoryArea.append(proc.getText());
                 //procesos[listaNumProceso]=proc;
+                for (int k = 0; k<pags.length;k++){
+                    Pagina[] pila = proc.getP();
+                    MP.addPila(pila[k]);
+                }
                 
         }
     }//GEN-LAST:event_processSeqCreateBtnMouseClicked
@@ -815,37 +823,24 @@ public class simulacion extends javax.swing.JFrame {
        int m = Integer.valueOf(marcos);
        boolean textShow = true;
        String[] marcosTD = new String[m];
-        marcosDisplay.setText(String.valueOf(marcos));
-        
-        Thread marcosText;
-        marcosText = new Thread (new Runnable(){
-            public void run() {
-                int trial = 0;
-                while(true){
-                    for (int i = 0;i<m;i++){
-                        marcosTD[i]=trial+" . ";
-                        System.out.println(marcosTD[i]);
-                    }
-                    
-                    try {
-                        sleep(100);
-                        trial++;
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(simulacion.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            }});
+       marcosDisplay.setText(String.valueOf(marcos));
+       JTextField[] marcosFields = new JTextField[m];
+       boolean[] avail = new boolean[m];     
         
         
         Thread textUpdate;
         textUpdate = new Thread (new Runnable(){
             public void run() {
+                int i = 0;
                 while(textShow){
-                        marcosText.start();
-                        switch (m){
+                    
+                    switch (m){
                     case 1:
-                        marco1.setText(marcosTD[0]);
-                        
+                        marcosFields[0]=marco1;
+                        //marco1.setText(marcosTD[0]);
+                        for (i = 0; i<m; i++){
+                            avail[i]=true;
+                        }
                         marco2.setBackground(Color.black);
                         marco3.setBackground(Color.black);
                         marco4.setBackground(Color.black);
@@ -855,9 +850,13 @@ public class simulacion extends javax.swing.JFrame {
                         marco8.setBackground(Color.black);
                         marco9.setBackground(Color.black);
                         marco10.setBackground(Color.black);
-                        marcosText.stop();
                     break;
                     case 2: 
+                        for (i = 0; i<m; i++){
+                            avail[i]=true;
+                        }
+                        marcosFields[0]=marco1;
+                        marcosFields[1]=marco2;
                         marco1.setText(marcosTD[0]);
                         marco2.setText(marcosTD[1]);
                         marco3.setBackground(Color.black);
@@ -868,9 +867,14 @@ public class simulacion extends javax.swing.JFrame {
                         marco8.setBackground(Color.black);
                         marco9.setBackground(Color.black);
                         marco10.setBackground(Color.black);
-                        marcosText.suspend();
                     break;
                     case 3:
+                        for (i = 0; i<m; i++){
+                            avail[i]=true;
+                        }
+                        marcosFields[0]=marco1;
+                        marcosFields[1]=marco2;
+                        marcosFields[2]=marco3;
                         marco1.setText(marcosTD[0]);
                         marco2.setText(marcosTD[1]);
                         marco3.setText(marcosTD[2]);
@@ -881,9 +885,16 @@ public class simulacion extends javax.swing.JFrame {
                         marco8.setBackground(Color.black);
                         marco9.setBackground(Color.black);
                         marco10.setBackground(Color.black);
-                        marcosText.suspend();
                     break;
                     case 4: 
+                        for (i = 0; i<m; i++){
+                            avail[i]=true;
+                        }
+                        marcosFields[0]=marco1;
+                        marcosFields[1]=marco2;
+                        marcosFields[2]=marco3;
+                        marcosFields[3]=marco4;
+                        
                         marco1.setText(marcosTD[0]);
                         marco2.setText(marcosTD[1]);
                         marco3.setText(marcosTD[2]);
@@ -895,9 +906,16 @@ public class simulacion extends javax.swing.JFrame {
                         marco8.setBackground(Color.black);
                         marco9.setBackground(Color.black);
                         marco10.setBackground(Color.black);
-                        marcosText.suspend();
                     break;
                     case 5:
+                        for (i = 0; i<m; i++){
+                            avail[i]=true;
+                        }
+                        marcosFields[0]=marco1;
+                        marcosFields[1]=marco2;
+                        marcosFields[2]=marco3;
+                        marcosFields[3]=marco4;
+                        marcosFields[4]=marco5;
                         
                         marco1.setText(marcosTD[0]);
                         marco2.setText(marcosTD[1]);
@@ -909,9 +927,18 @@ public class simulacion extends javax.swing.JFrame {
                         marco8.setBackground(Color.black);
                         marco9.setBackground(Color.black);
                         marco10.setBackground(Color.black);
-                        marcosText.stop();
                     break;
                     case 6:
+                        for (i = 0; i<m; i++){
+                            avail[i]=true;
+                        }
+                        marcosFields[0]=marco1;
+                        marcosFields[1]=marco2;
+                        marcosFields[2]=marco3;
+                        marcosFields[3]=marco4;
+                        marcosFields[4]=marco5;
+                        marcosFields[5]=marco6;
+                        
                         marco1.setText(marcosTD[0]);
                         marco2.setText(marcosTD[1]);
                         marco3.setText(marcosTD[2]);
@@ -922,9 +949,19 @@ public class simulacion extends javax.swing.JFrame {
                         marco8.setBackground(Color.black);
                         marco9.setBackground(Color.black);
                         marco10.setBackground(Color.black);
-                        marcosText.stop();
                     break;
                     case 7:
+                        for (i = 0; i<m; i++){
+                            avail[i]=true;
+                        }
+                        marcosFields[0]=marco1;
+                        marcosFields[1]=marco2;
+                        marcosFields[2]=marco3;
+                        marcosFields[3]=marco4;
+                        marcosFields[4]=marco5;
+                        marcosFields[5]=marco6;
+                        marcosFields[6]=marco7;
+                        
                         marco1.setText(marcosTD[0]);
                         marco2.setText(marcosTD[1]);
                         marco3.setText(marcosTD[2]);
@@ -935,9 +972,20 @@ public class simulacion extends javax.swing.JFrame {
                         marco8.setBackground(Color.black);
                         marco9.setBackground(Color.black);
                         marco10.setBackground(Color.black);
-                        marcosText.stop();
                     break;
                     case 8:
+                        for (i = 0; i<m; i++){
+                            avail[i]=true;
+                        }
+                        marcosFields[0]=marco1;
+                        marcosFields[1]=marco2;
+                        marcosFields[2]=marco3;
+                        marcosFields[3]=marco4;
+                        marcosFields[4]=marco5;
+                        marcosFields[5]=marco6;
+                        marcosFields[6]=marco7;
+                        marcosFields[7]=marco8;
+                        
                         marco1.setText(marcosTD[0]);
                         marco2.setText(marcosTD[1]);
                         marco3.setText(marcosTD[2]);
@@ -948,9 +996,21 @@ public class simulacion extends javax.swing.JFrame {
                         marco8.setText(marcosTD[7]);
                         marco9.setBackground(Color.black);
                         marco10.setBackground(Color.black);
-                        marcosText.stop();
                     break;
                     case 9:
+                        for (i = 0; i<m; i++){
+                            avail[i]=true;
+                        }
+                        marcosFields[0]=marco1;
+                        marcosFields[1]=marco2;
+                        marcosFields[2]=marco3;
+                        marcosFields[3]=marco4;
+                        marcosFields[4]=marco5;
+                        marcosFields[5]=marco6;
+                        marcosFields[6]=marco7;
+                        marcosFields[7]=marco8;
+                        marcosFields[8]=marco9;
+                        
                         marco1.setText(marcosTD[0]);
                         marco2.setText(marcosTD[1]);
                         marco3.setText(marcosTD[2]);
@@ -961,9 +1021,22 @@ public class simulacion extends javax.swing.JFrame {
                         marco8.setText(marcosTD[7]);
                         marco9.setText(marcosTD[8]);
                         marco10.setBackground(Color.black);
-                        marcosText.stop();
                     break;
                     case 10:
+                        for (i = 0; i<m; i++){
+                            avail[i]=true;
+                        }
+                        marcosFields[0]=marco1;
+                        marcosFields[1]=marco2;
+                        marcosFields[2]=marco3;
+                        marcosFields[3]=marco4;
+                        marcosFields[4]=marco5;
+                        marcosFields[5]=marco6;
+                        marcosFields[6]=marco7;
+                        marcosFields[7]=marco8;
+                        marcosFields[8]=marco9;
+                        marcosFields[9]=marco10;
+                        
                         marco1.setText(marcosTD[0]);
                         marco2.setText(marcosTD[1]);
                         marco3.setText(marcosTD[2]);
@@ -974,22 +1047,53 @@ public class simulacion extends javax.swing.JFrame {
                         marco8.setText(marcosTD[7]);
                         marco9.setText(marcosTD[8]);
                         marco10.setText(marcosTD[9]);
-                        marcosText.stop();
                     break;
                 }
                    
                 }
             }    
         });
+        
         textUpdate.start();
         try {
             textUpdate.sleep(10);
         } catch (InterruptedException ex) {
             Logger.getLogger(simulacion.class.getName()).log(Level.SEVERE, null, ex);
         }
-        textUpdate.suspend();
+        textUpdate.stop();
         
+        for (int i = 0; i<m; i++){
+           marcosFields[i].setText("");
+       } 
         
+        Thread processing;
+        processing = new Thread (new Runnable(){
+            public void run(){
+                for (int i = 0; i < m; i++){
+                    System.out.print("marco "+i+" = ");
+                    String t = marcosFields[i].getText();
+                    System.out.print(t+"| \n");
+                    if(avail[i]){
+                        System.out.println("TRUTH");
+                    }
+                }
+                
+                for (int i = 0; i < m; i++){
+                    if (avail[i]){
+                        MP.addEjec(MP.pushPila());
+                        marcosFields[i].setText(String.valueOf(MP.getPaginaEjec(i).getId()));
+                    }
+                    
+                }
+                
+                
+                
+                
+                
+            //end of run down here    
+            }
+        });
+        processing.start();
             
                 
                 
