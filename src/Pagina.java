@@ -19,6 +19,7 @@ public class Pagina extends Thread{
     private long time = 5000; //5s
     private int id;
     private int idP;
+    private boolean alert = false;
 
     public Pagina(int n, int p, int idP) {
         ApunNext = new boolean[p];
@@ -48,24 +49,25 @@ public class Pagina extends Thread{
 
     @Override
     public synchronized void start() {
+        System.out.println("Ejecuto..."+ejecutado);
         try {
             sleep(time);
         } catch (InterruptedException ex) {
             Logger.getLogger(Pagina.class.getName()).log(Level.SEVERE, null, ex);
         }
-        ejecutado++;
+        this.ejecutado++;
         
         if(exec-ejecutado==0){
-            try {
-                this.finalize();
-            } catch (Throwable ex) {
-                Logger.getLogger(Pagina.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            this.alert = true;
         }
         
     }
 
-    
+    public void kill() throws InterruptedException{
+        if (alert){
+            this.join();
+        }
+    }
     
     
     
@@ -136,13 +138,25 @@ public class Pagina extends Thread{
         this.exec = exec;
     }
 
-    public int getIdPage() {
-        id = Integer.valueOf(this.id);
-        return id;
-    }
 
     public void setIdPage(int id) {
         this.id = id;
+    }
+
+    public int getIdPage() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public boolean isAlert() {
+        return alert;
+    }
+
+    public void setAlert(boolean alert) {
+        this.alert = alert;
     }
     
     

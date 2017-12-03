@@ -1086,20 +1086,32 @@ public class simulacion extends javax.swing.JFrame {
                         //System.out.print("| ");
                     }
                 }
-                
+                Pagina[] e;
                 for (int i = 0; i < m; i++){
                     if (avail[i]){
                         MP.addEjec(MP.pushPila());
-                        Pagina[] e = MP.getEnEjecucion();
+                        e = MP.getEnEjecucion();
                         //System.out.println("===\n ejecutando #"+i+":");
                         //System.out.println("P #"+e[i].getIdP()+" Pag #"+e[i].getIdPage());
                         //e[i].display();
                         marcosFields[i].setText("P #"+e[i].getIdP()+" Pag #"+e[i].getIdPage());
-                        //e[i].start();
+                        e[i].start();
+                        avail[i]=false;
                     }
                     
                 }
                 
+                for (int i = 0; i<m; i++){
+                    if(e[i].isAlert()){
+                        try {
+                            e[i].kill();
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(simulacion.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        
+                        avail[i]=true;
+                    }
+                }
                 
                 
                 
