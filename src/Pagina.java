@@ -48,20 +48,20 @@ public class Pagina extends Thread{
     }
 
     @Override
-    public synchronized void start() {
+    public synchronized void run() {
         System.out.println("Ejecuto..."+ejecutado);
         try {
             sleep(time);
         } catch (InterruptedException ex) {
             Logger.getLogger(Pagina.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.ejecutado++;
         
-        if(exec-ejecutado==0){
-            this.alert = true;
-        }
+        this.alert = true;
+        this.suspend();
         
     }
+    
+    
 
     public void kill() throws InterruptedException{
         if (alert){

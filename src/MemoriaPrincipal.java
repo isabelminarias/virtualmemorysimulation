@@ -47,6 +47,19 @@ public class MemoriaPrincipal {
         return p;
     }
     
+    public void reOrganize(){
+        Pagina c; 
+        for (int i = 0; i < enEjecucion.length; i++){
+            if(enEjecucion[i]==null&&(i+1<enEjecucion.length)){
+                c = enEjecucion[i+1];
+                enEjecucion[i]=c;
+            }
+            else{
+                enEjecucion[i]= this.pushPila();
+            }
+        }
+    }
+    
     public void addEjec(Pagina p){
         enEjecucion[apunEjec] = p;
         apunEjec++;

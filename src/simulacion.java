@@ -96,6 +96,7 @@ public class simulacion extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         marcosDisplay = new javax.swing.JTextField();
         MemoriaDisplay = new javax.swing.JButton();
+        time = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -354,6 +355,8 @@ public class simulacion extends javax.swing.JFrame {
             }
         });
 
+        time.setText("time");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -440,7 +443,10 @@ public class simulacion extends javax.swing.JFrame {
                             .addComponent(marcosUsados)
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(MemoriaDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(MemoriaDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(time)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -510,7 +516,9 @@ public class simulacion extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(marcosUsados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(MemoriaDisplay))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(time)
+                .addContainerGap())
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -1072,6 +1080,23 @@ public class simulacion extends javax.swing.JFrame {
            marcosFields[i].setText("");
        } 
         
+        Thread clock;
+        clock = new Thread (new Runnable(){
+            int seconds=0;
+           public void run(){
+               while(textShow){
+               time.setText(String.valueOf(seconds));
+                   try {
+                       sleep(1000);
+                   } catch (InterruptedException ex) {
+                       Logger.getLogger(simulacion.class.getName()).log(Level.SEVERE, null, ex);
+                   }
+               seconds++;
+               }
+           }
+        });
+        clock.start();
+        
         Thread processing;
         processing = new Thread (new Runnable(){
             boolean running = true;
@@ -1086,35 +1111,56 @@ public class simulacion extends javax.swing.JFrame {
                         //System.out.print("| ");
                     }
                 }
-                Pagina[] e;
+                Pagina[] e = new Pagina[m];
+                
+                System.out.println("check availability");
                 for (int i = 0; i < m; i++){
-                    if (avail[i]){
+                    if (avail[i]==true){
+                        System.out.print("avail in "+i+ " |");
                         MP.addEjec(MP.pushPila());
                         e = MP.getEnEjecucion();
                         //System.out.println("===\n ejecutando #"+i+":");
                         //System.out.println("P #"+e[i].getIdP()+" Pag #"+e[i].getIdPage());
                         //e[i].display();
                         marcosFields[i].setText("P #"+e[i].getIdP()+" Pag #"+e[i].getIdPage());
-                        e[i].start();
                         avail[i]=false;
+                        System.out.println("now avail i"+avail[i]);
                     }
+                    System.out.println("avail i"+avail[i]);
                     
                 }
                 
-                for (int i = 0; i<m; i++){
+                for(int i = 0; i<e.length; i++){
+                    System.out.print(i+" |");
+                    //e[i].display();
+                }
+                System.out.println("\n elength="+e.length);
+                
+                for (int i = 0; i<e.length; i++){
+                    System.out.print("i="+i+" |");
+                    System.out.print("e is alert? "+e[i].isAlert()+" |");
                     if(e[i].isAlert()){
+                        System.out.println("\n alert");
+                        System.out.print("i="+i+"| pag"+String.valueOf(e[i].getIdPage())+" |");
+                        avail[i]=true;
+                        System.out.println("avail i"+avail[i]);
                         try {
                             e[i].kill();
                         } catch (InterruptedException ex) {
                             Logger.getLogger(simulacion.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                        
-                        avail[i]=true;
+                    }
+                    else if (!e[i].isAlive()){
+                        e[i].start();
                     }
                 }
                 
                 
-                
+                    try {
+                        sleep((long) (e[0].getTime()/2));
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(simulacion.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }    
             //end of run down here    
             }
@@ -1217,6 +1263,7 @@ public class simulacion extends javax.swing.JFrame {
     private javax.swing.JTextField ordenPagProc;
     private javax.swing.JButton processCreateBtn;
     private javax.swing.JButton processSeqCreateBtn;
+    private javax.swing.JLabel time;
     private javax.swing.JTextArea virtualMemoryArea;
     // End of variables declaration//GEN-END:variables
 }
