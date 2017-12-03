@@ -25,9 +25,10 @@ public class Pagina {
         this.exec=1;
     }
     
-    public Pagina(boolean[] a, int e) {
+    public Pagina(boolean[] a, int e, int id) {
         this.ApunNext = a;
         this.exec = e;
+        this.id = id;
     }
     
     public void getApunNextDisplay(){

@@ -16,7 +16,9 @@ import static java.lang.Thread.*;
  */
 public class simulacion extends javax.swing.JFrame {
     int marcos=10;
-    int listaNumProceso = 0;
+    int listaNumProceso = -1;
+    String[] mVirtual;
+    Proceso[] procesos;
      
     
     
@@ -684,6 +686,7 @@ public class simulacion extends javax.swing.JFrame {
                 Proceso proc = new Proceso(pags,listaNumProceso);
                 proc.display();
                 virtualMemoryArea.append(proc.getText());
+                procesos[listaNumProceso]=proc;
         }
         
         
@@ -759,16 +762,16 @@ public class simulacion extends javax.swing.JFrame {
                         }
                     }
                     for (int m=0;m<orden.length;m++){
-                        System.out.println("orden i."+m+". ="+orden[m]);
+                        //System.out.println("orden i."+m+". ="+orden[m]);
                     }
                     f = orden;
                     for (int l=0; l<f.length; l++){
-                        System.out.println("f pos."+l+". = "+f[l]);
+                        //System.out.println("f pos."+l+". = "+f[l]);
                     }
-                    pags[i]= new Pagina(f,cont);
+                    pags[i]= new Pagina(f,cont,i);
                     //pags[i].display();
-                    pags[i].getApunNextDisplay();
-                    System.out.println("");
+                    //pags[i].getApunNextDisplay();
+                    //System.out.println("");
                     //System.out.println("\n reinicializacion terminada, lets start next?");
                     
                     
@@ -777,9 +780,11 @@ public class simulacion extends javax.swing.JFrame {
                 
                 //Esto en caso de que el proceso trabaje mas de una vez una pagina, para que sepa el total de veces
                 //que va a correr una de sus paginas
-                Proceso proc = new Proceso(pags,intArray.length,listaNumProceso);
+                Proceso proc = new Proceso(pags,intArray.length,listaNumProceso,intArray);
                 proc.display();
                 virtualMemoryArea.append(proc.getText());
+                procesos[listaNumProceso]=proc;
+                
         }
     }//GEN-LAST:event_processSeqCreateBtnMouseClicked
 

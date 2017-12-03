@@ -14,6 +14,7 @@ public class Proceso {
     private int pagina=0;   //la pagina que este en proceso o la ultima que se proceso
     private int pagsTotal;  //para saber si se sigue procesando o ya termino (con pag secuencial)
     private int id; 
+    private int[] orden;
 
     public Proceso(Pagina[] p, int id) {
         this.p = p;
@@ -21,10 +22,11 @@ public class Proceso {
         this.pagsTotal = p.length;
     }
     
-    public Proceso(Pagina[] p,int pagsTotal,int id) {
+    public Proceso(Pagina[] p,int pagsTotal,int id, int[] orden) {
         this.p = p;
         this.pagsTotal = pagsTotal;
         this.id = id;
+        this.orden = orden;
     }
 
     public Proceso(Pagina[] p, boolean estado) {
