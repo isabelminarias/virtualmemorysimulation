@@ -53,7 +53,7 @@ public class Proceso {
     }
     
     public void display(){
-        System.out.println("Proceso #"+id);
+        System.out.println("Proceso #"+(id+1));
         System.out.println("Paginas del proceso = "+p.length);
         System.out.println("Cantidad iteraciones de proceso de pagina = "+pagsTotal);
         for (int i = 0; i < p.length; i++){

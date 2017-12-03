@@ -13,8 +13,8 @@ public class Pagina {
     private int ejecutado = 0;
     private float time = 5000; //5s
 
-    public Pagina(int n) {
-        this.ApunNext = new boolean[n];
+    public Pagina(int n, int p) {
+        ApunNext = new boolean[p];
         for (int i = 0; i < n; i++){
             this.ApunNext[i]=false;
         }
@@ -29,6 +29,7 @@ public class Pagina {
         for (int i = 0; i<ApunNext.length;i++){
             System.out.print(ApunNext[i] +" |");
         }
+        System.out.println("");
     }
     
     

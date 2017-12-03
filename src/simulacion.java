@@ -679,13 +679,13 @@ public class simulacion extends javax.swing.JFrame {
                     System.out.println("f "+j+" = "+f[j]);
                     }
                     //Creamos la nueva pagina con el orden default 
-                    pags[i] = new Pagina(i);
-                    System.out.println("pagina "+i);
+                    pags[i] = new Pagina(i,p);
+                    //System.out.println("pagina "+i);
                     pags[i].display();
                     //en este display sale bien el orden de ejecucion
                     ordenArray[i]=false;
                     for (int j = 0; j<p; j++){
-                    System.out.print(" "+j+" = "+ordenArray[j]+" |" );
+                    //System.out.print(" "+j+" = "+ordenArray[j]+" |" );
                     //verificacion de que el array este como lo queremos
                     }
                 }
@@ -770,7 +770,8 @@ public class simulacion extends javax.swing.JFrame {
                         //System.out.println("f pos."+l+". = "+f[l]);
                     }
                     pags[i]= new Pagina(f);
-                    pags[i].display();
+                    //pags[i].display();
+                    pags[i].getApunNextDisplay();
                     //System.out.println("\n reinicializacion terminada, lets start next?");
                     
                 }
@@ -779,6 +780,7 @@ public class simulacion extends javax.swing.JFrame {
                 //Esto en caso de que el proceso trabaje mas de una vez una pagina, para que sepa el total de veces
                 //que va a correr una de sus paginas
                 Proceso proc = new Proceso(pags,intArray.length,listaNumProceso);
+                proc.display();
         }
     }//GEN-LAST:event_processSeqCreateBtnMouseClicked
 
