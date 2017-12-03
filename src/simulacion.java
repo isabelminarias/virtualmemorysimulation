@@ -19,7 +19,7 @@ public class simulacion extends javax.swing.JFrame {
     int marcos;
     int listaNumProceso = -1;
     String[] mVirtual;
-    Proceso[] procesos;
+    Proceso[] procesos = new Proceso[1000];
     MemoriaPrincipal MP = new MemoriaPrincipal(10);
      
     
@@ -631,7 +631,7 @@ public class simulacion extends javax.swing.JFrame {
         for (i =0; i<pTexto.length();i++){
             if (!Character.isDigit(pTexto.charAt(i))){
                 e++;
-                System.out.println("char at "+i+" is not digit");
+                //System.out.println("char at "+i+" is not digit");
             }
             
         }
@@ -659,22 +659,22 @@ public class simulacion extends javax.swing.JFrame {
                 }
             //Como estamos sin secuencia especificada, el default 
             for (i = 0; i<p;i++){
-                    System.out.println("convertimos a array[ "+i+" ] en true");
+                    //System.out.println("convertimos a array[ "+i+" ] en true");
                     ordenArray[i]=true;
                     for (int j = 0; j<p; j++){
-                    System.out.print(" "+j+" = "+ordenArray[j]+" |" );
+                    //System.out.print(" "+j+" = "+ordenArray[j]+" |" );
                     //verificacion de que el array este como lo queremos
                     }
                     
                     f = ordenArray;
-                    System.out.println("verificacion del f array");
+                    //System.out.println("verificacion del f array");
                     for (int j = 0; j<p; j++){
-                    System.out.println("f "+j+" = "+f[j]);
+                    //System.out.println("f "+j+" = "+f[j]);
                     }
                     //Creamos la nueva pagina con el orden default 
                     pags[i] = new Pagina(i,p,listaNumProceso);
                     //System.out.println("pagina "+i);
-                    pags[i].display();
+                    //pags[i].display();
                     //en este display sale bien el orden de ejecucion
                     ordenArray[i]=false;
                     for (int j = 0; j<p; j++){
@@ -684,7 +684,8 @@ public class simulacion extends javax.swing.JFrame {
                 }
                 //Creado el proceso aqui abajo, no sale el orden de ejecucion
                 Proceso proc = new Proceso(pags,listaNumProceso);
-                proc.display();
+                //proc.display();
+                this.procesos[listaNumProceso]=proc;
                 virtualMemoryArea.append(proc.getText());
                 //procesos[listaNumProceso-1]=proc;
                 for (int k = 0; k<pags.length;k++){
@@ -704,7 +705,7 @@ public class simulacion extends javax.swing.JFrame {
         String poTexto = ordenPagProc.getText();
         String pTexto = numPagProc.getText();
         String[] stArray = poTexto.split(",");
-        System.out.println("starray length ="+stArray.length);
+        //System.out.println("starray length ="+stArray.length);
         int[] intArray = new int[stArray.length];
         int e=0; int i= 0; 
         int p; 
@@ -806,7 +807,7 @@ public class simulacion extends javax.swing.JFrame {
                 Proceso proc = new Proceso(pags,listaNumProceso,intArray);
                 proc.display();
                 proc.displayPagOrdenado();
-                
+                procesos[listaNumProceso]=proc;
                 virtualMemoryArea.append(proc.getText());
                 //procesos[listaNumProceso]=proc;
                 for (int k = 0; k<pags.length;k++){
@@ -828,7 +829,9 @@ public class simulacion extends javax.swing.JFrame {
        String[] marcosTD = new String[m];
        marcosDisplay.setText(String.valueOf(marcos));
        JTextField[] marcosFields = new JTextField[m];
-       boolean[] avail = new boolean[m];     
+        System.out.println("m = "+m);
+       boolean[] avail = new boolean[m];    
+        System.out.println("avail length "+avail.length);
        MP.setEnEjecucion(new Pagina[marcos]);
         
         Thread textUpdate;
@@ -1071,13 +1074,16 @@ public class simulacion extends javax.swing.JFrame {
         
         Thread processing;
         processing = new Thread (new Runnable(){
+            boolean running = true;
             public void run(){
+                while (running){
+                    
                 for (int i = 0; i < m; i++){
-                    System.out.print("marco "+i+" = ");
-                    String t = marcosFields[i].getText();
-                    System.out.print(t+"| \n");
+                    //System.out.print("marco "+i+" = ");
+                    //String t = marcosFields[i].getText();
+                    //System.out.print(t+"| \n");
                     if(avail[i]){
-                        System.out.println("TRUTH");
+                        //System.out.print("| ");
                     }
                 }
                 
@@ -1085,10 +1091,11 @@ public class simulacion extends javax.swing.JFrame {
                     if (avail[i]){
                         MP.addEjec(MP.pushPila());
                         Pagina[] e = MP.getEnEjecucion();
-                        System.out.println("===\n ejecutando #"+i+":");
-                        System.out.println("P #"+e[i].getIdP()+" Pag #"+e[i].getIdPage());
-                        e[i].display();
+                        //System.out.println("===\n ejecutando #"+i+":");
+                        //System.out.println("P #"+e[i].getIdP()+" Pag #"+e[i].getIdPage());
+                        //e[i].display();
                         marcosFields[i].setText("P #"+e[i].getIdP()+" Pag #"+e[i].getIdPage());
+                        //e[i].start();
                     }
                     
                 }
@@ -1096,7 +1103,7 @@ public class simulacion extends javax.swing.JFrame {
                 
                 
                 
-                
+                }    
             //end of run down here    
             }
         });

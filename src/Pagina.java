@@ -55,6 +55,14 @@ public class Pagina extends Thread{
         }
         ejecutado++;
         
+        if(exec-ejecutado==0){
+            try {
+                this.finalize();
+            } catch (Throwable ex) {
+                Logger.getLogger(Pagina.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
     }
 
     
