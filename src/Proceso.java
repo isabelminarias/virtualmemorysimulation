@@ -60,7 +60,8 @@ public class Proceso {
         System.out.println("Cantidad iteraciones de proceso de pagina = "+pagsTotal);
         for (int i = 0; i < p.length; i++){
             System.out.print("Pagina "+i);
-            p[i].display();
+            System.out.print("bool array= ");
+            p[i].getApunNextDisplay();
         }
     }
     

@@ -686,7 +686,7 @@ public class simulacion extends javax.swing.JFrame {
                 Proceso proc = new Proceso(pags,listaNumProceso);
                 proc.display();
                 virtualMemoryArea.append(proc.getText());
-                procesos[listaNumProceso]=proc;
+                //procesos[listaNumProceso-1]=proc;
         }
         
         
@@ -733,16 +733,17 @@ public class simulacion extends javax.swing.JFrame {
             }
             
             //Para ver como es el array de ints
-            //System.out.println("\n ARRAY DE INTS \n");
-            for (i=0;i<intArray.length;i++){
-                //System.out.print("array int "+i+" = "+intArray[i]+"  ||| ");
+            System.out.println("orden:");
+            for (int c=0;c<intArray.length;c++){
+                System.out.print(intArray[c]+" |");
             }
+            System.out.println("");
             
             
             //Verificacion: si le toca a la pagina i de ejecutar, se pone en el array orden, y una vez se ve
             //en cuales posiciones de todo el array se ejecuta, se crea la pagina. 
-                for (i = 0; i<p;i++){
-                    int number = i;
+                for (int lq = 0; lq<p;lq++){
+                    int number = lq;
                     int cont =0;
                     //System.out.println("Number to compare is "+number);
                     //Inicializo el array de orden todo en falso para solo ponerlo true cuando le toca a una pagina de ser ejecutada
@@ -766,24 +767,41 @@ public class simulacion extends javax.swing.JFrame {
                     }
                     f = orden;
                     for (int l=0; l<f.length; l++){
-                        //System.out.println("f pos."+l+". = "+f[l]);
+                        System.out.println("f pos."+l+". = "+f[l]);
                     }
-                    pags[i]= new Pagina(f,cont,i);
-                    //pags[i].display();
-                    //pags[i].getApunNextDisplay();
+                    
+                    Pagina trial = new Pagina(f,cont,lq);
+                    System.out.println("trial pagina");
+                    //trial.getApunNextDisplay();
+                    pags[lq]= trial;
+                    //pags[lq].setApunNext(trial.getApunNext());
+                    pags[lq].display();
+                    //System.out.print("Pagina "+lq+"array booleano: ");
+                    //pags[lq].getApunNextDisplay();
                     //System.out.println("");
                     //System.out.println("\n reinicializacion terminada, lets start next?");
-                    
+                    System.out.println("\n lq="+lq);
                     
                 }
-                pags[0].getApunNextDisplay();
+                System.out.println("");
+                System.out.println("=======");
+                System.out.println("");
                 
+                for(i = 0; i<pags.length;i++){
+                    System.out.print("Pag[]"+i+" =");
+                    pags[i].getApunNextDisplay();
+                    System.out.println("");
+                }
+                
+                System.out.println("");
+                System.out.println("=======");
+                System.out.println("");
                 //Esto en caso de que el proceso trabaje mas de una vez una pagina, para que sepa el total de veces
                 //que va a correr una de sus paginas
                 Proceso proc = new Proceso(pags,intArray.length,listaNumProceso,intArray);
                 proc.display();
                 virtualMemoryArea.append(proc.getText());
-                procesos[listaNumProceso]=proc;
+                //procesos[listaNumProceso]=proc;
                 
         }
     }//GEN-LAST:event_processSeqCreateBtnMouseClicked
@@ -796,15 +814,37 @@ public class simulacion extends javax.swing.JFrame {
     private void MemoriaDisplayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MemoriaDisplayMouseClicked
        int m = Integer.valueOf(marcos);
        boolean textShow = true;
+       String[] marcosTD = new String[m];
         marcosDisplay.setText(String.valueOf(marcos));
+        
+        Thread marcosText;
+        marcosText = new Thread (new Runnable(){
+            public void run() {
+                int trial = 0;
+                while(true){
+                    for (int i = 0;i<m;i++){
+                        marcosTD[i]=trial+" . ";
+                        System.out.println(marcosTD[i]);
+                    }
+                    
+                    try {
+                        sleep(100);
+                        trial++;
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(simulacion.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }});
+        
+        
         Thread textUpdate;
         textUpdate = new Thread (new Runnable(){
             public void run() {
                 while(textShow){
-                    
+                        marcosText.start();
                         switch (m){
                     case 1:
-                        
+                        marco1.setText(marcosTD[0]);
                         
                         marco2.setBackground(Color.black);
                         marco3.setBackground(Color.black);
@@ -815,8 +855,11 @@ public class simulacion extends javax.swing.JFrame {
                         marco8.setBackground(Color.black);
                         marco9.setBackground(Color.black);
                         marco10.setBackground(Color.black);
+                        marcosText.stop();
                     break;
                     case 2: 
+                        marco1.setText(marcosTD[0]);
+                        marco2.setText(marcosTD[1]);
                         marco3.setBackground(Color.black);
                         marco4.setBackground(Color.black);
                         marco5.setBackground(Color.black);
@@ -825,9 +868,12 @@ public class simulacion extends javax.swing.JFrame {
                         marco8.setBackground(Color.black);
                         marco9.setBackground(Color.black);
                         marco10.setBackground(Color.black);
+                        marcosText.suspend();
                     break;
                     case 3:
-                        
+                        marco1.setText(marcosTD[0]);
+                        marco2.setText(marcosTD[1]);
+                        marco3.setText(marcosTD[2]);
                         marco4.setBackground(Color.black);
                         marco5.setBackground(Color.black);
                         marco6.setBackground(Color.black);
@@ -835,49 +881,100 @@ public class simulacion extends javax.swing.JFrame {
                         marco8.setBackground(Color.black);
                         marco9.setBackground(Color.black);
                         marco10.setBackground(Color.black);
+                        marcosText.suspend();
                     break;
                     case 4: 
-                    
+                        marco1.setText(marcosTD[0]);
+                        marco2.setText(marcosTD[1]);
+                        marco3.setText(marcosTD[2]);
+                        marco4.setText(marcosTD[3]);
+                        
                         marco5.setBackground(Color.black);
                         marco6.setBackground(Color.black);
                         marco7.setBackground(Color.black);
                         marco8.setBackground(Color.black);
                         marco9.setBackground(Color.black);
                         marco10.setBackground(Color.black);
+                        marcosText.suspend();
                     break;
                     case 5:
-                    
+                        
+                        marco1.setText(marcosTD[0]);
+                        marco2.setText(marcosTD[1]);
+                        marco3.setText(marcosTD[2]);
+                        marco4.setText(marcosTD[3]);
+                        marco5.setText(marcosTD[4]);
                         marco6.setBackground(Color.black);
                         marco7.setBackground(Color.black);
                         marco8.setBackground(Color.black);
                         marco9.setBackground(Color.black);
                         marco10.setBackground(Color.black);
+                        marcosText.stop();
                     break;
                     case 6:
-                        
+                        marco1.setText(marcosTD[0]);
+                        marco2.setText(marcosTD[1]);
+                        marco3.setText(marcosTD[2]);
+                        marco4.setText(marcosTD[3]);
+                        marco5.setText(marcosTD[4]);
+                        marco6.setText(marcosTD[5]);
                         marco7.setBackground(Color.black);
                         marco8.setBackground(Color.black);
                         marco9.setBackground(Color.black);
                         marco10.setBackground(Color.black);
+                        marcosText.stop();
                     break;
                     case 7:
-                        
+                        marco1.setText(marcosTD[0]);
+                        marco2.setText(marcosTD[1]);
+                        marco3.setText(marcosTD[2]);
+                        marco4.setText(marcosTD[3]);
+                        marco5.setText(marcosTD[4]);
+                        marco6.setText(marcosTD[5]);
+                        marco7.setText(marcosTD[6]);
                         marco8.setBackground(Color.black);
                         marco9.setBackground(Color.black);
                         marco10.setBackground(Color.black);
+                        marcosText.stop();
                     break;
                     case 8:
-                        
+                        marco1.setText(marcosTD[0]);
+                        marco2.setText(marcosTD[1]);
+                        marco3.setText(marcosTD[2]);
+                        marco4.setText(marcosTD[3]);
+                        marco5.setText(marcosTD[4]);
+                        marco6.setText(marcosTD[5]);
+                        marco7.setText(marcosTD[6]);
+                        marco8.setText(marcosTD[7]);
                         marco9.setBackground(Color.black);
                         marco10.setBackground(Color.black);
+                        marcosText.stop();
                     break;
                     case 9:
-                        
-                        
+                        marco1.setText(marcosTD[0]);
+                        marco2.setText(marcosTD[1]);
+                        marco3.setText(marcosTD[2]);
+                        marco4.setText(marcosTD[3]);
+                        marco5.setText(marcosTD[4]);
+                        marco6.setText(marcosTD[5]);
+                        marco7.setText(marcosTD[6]);
+                        marco8.setText(marcosTD[7]);
+                        marco9.setText(marcosTD[8]);
                         marco10.setBackground(Color.black);
+                        marcosText.stop();
                     break;
                     case 10:
-                        
+                        marco1.setText(marcosTD[0]);
+                        marco2.setText(marcosTD[1]);
+                        marco3.setText(marcosTD[2]);
+                        marco4.setText(marcosTD[3]);
+                        marco5.setText(marcosTD[4]);
+                        marco6.setText(marcosTD[5]);
+                        marco7.setText(marcosTD[6]);
+                        marco8.setText(marcosTD[7]);
+                        marco9.setText(marcosTD[8]);
+                        marco10.setText(marcosTD[9]);
+                        marcosText.stop();
                     break;
                 }
                    
@@ -886,11 +983,17 @@ public class simulacion extends javax.swing.JFrame {
         });
         textUpdate.start();
         try {
-            textUpdate.sleep(1000);
+            textUpdate.sleep(10);
         } catch (InterruptedException ex) {
             Logger.getLogger(simulacion.class.getName()).log(Level.SEVERE, null, ex);
         }
         textUpdate.suspend();
+        
+        
+            
+                
+                
+        
     }//GEN-LAST:event_MemoriaDisplayMouseClicked
 
     /**
