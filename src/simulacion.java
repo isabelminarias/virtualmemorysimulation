@@ -354,6 +354,11 @@ public class simulacion extends javax.swing.JFrame {
                 MemoriaDisplayMouseClicked(evt);
             }
         });
+        MemoriaDisplay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MemoriaDisplayActionPerformed(evt);
+            }
+        });
 
         time.setText("time");
 
@@ -550,7 +555,7 @@ public class simulacion extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1103,22 +1108,16 @@ public class simulacion extends javax.swing.JFrame {
         processing = new Thread (new Runnable(){
             boolean running = true;
             public void run(){
+              
                 while (running){
                     
-                for (int i = 0; i < m; i++){
-                    //System.out.print("marco "+i+" = ");
-                    //String t = marcosFields[i].getText();
-                    //System.out.print(t+"| \n");
-                    if(avail[i]){
-                        //System.out.print("| ");
-                    }
-                }
-                Pagina[] e = new Pagina[m];
+                  Pagina[] e = new Pagina[m];
                 
-                System.out.println("check availability");
+                //System.out.println("check availability");
                 for (int i = 0; i < m; i++){
                     if (avail[i]==true){
                         //System.out.print("avail in "+i+ " |");
+                       
                         MP.addEjec(MP.pushPila());
                         e = MP.getEnEjecucion();
                         //System.out.println("===\n ejecutando #"+i+":");
@@ -1127,16 +1126,17 @@ public class simulacion extends javax.swing.JFrame {
                         marcosFields[i].setText("P #"+e[i].getIdP()+" Pag #"+e[i].getIdPage());
                         
                         avail[i]=false;
-                        System.out.println("now avail i"+avail[i]);
+                        
                         if(e[i].getIdP()==101){
                             marcosFields[i].setText("");
                             avail[i]=true;
                         }
+                        //System.out.println("now avail i"+avail[i]);
                     }
                     //System.out.println("avail i"+avail[i]);
                     
                 }
-                    System.out.println("end check avail");
+                    //System.out.println("end check avail");
                 
                 for(int i = 0; i<e.length; i++){
                     //System.out.print(i+" |");
@@ -1145,6 +1145,7 @@ public class simulacion extends javax.swing.JFrame {
                 //System.out.println("\n elength="+e.length);
                 
                 for (int i = 0; i<e.length; i++){
+                    
                     //System.out.println("id del proceso "+e[i].getId());
                     //System.out.print("i="+i+" |");
                     //System.out.print("e is alert? "+e[i].isAlert()+" |");
@@ -1160,18 +1161,56 @@ public class simulacion extends javax.swing.JFrame {
                         }*/
                     }
                     else if (!e[i].isAlive()&&e[i].getIdP()!=101){
-                        System.out.println("Alive?"+e[i].isAlive());
+                        //System.out.println("Alive?"+e[i].isAlive());
                         e[i].start();
+                        
+                        
+                    }
+                    else if(e[i].getId()==101){
+                        avail[i]=true;
+                        marcosFields[i].setText("End");
+                    
+                        }
+                    
+                }
+                for(int i = 0; i<m; i++){
+                    if(avail[i]){
+                        marcosFields[i].setText("Cleared");
                     }
                 }
                 
-                    System.out.println("\n llego aqui");
+                
+                    System.out.println("\n loop finished");
                     try {
-                        sleep(1500);
-                    } catch (InterruptedException ex) {
+                        sleep(3000);
+                          
+                        
+                    } 
+                    catch (InterruptedException ex) {
                         Logger.getLogger(simulacion.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                }    
+                    
+                  
+                }  
+                
+                Thread vista;
+                vista = new Thread(new Runnable(){
+                    public void run(){
+                        while(true){
+                            
+                            
+                            
+                            
+                            try {
+                                sleep(1000);
+                            } catch (InterruptedException ex) {
+                                Logger.getLogger(simulacion.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
+                    }
+                });
+                
+                
             //end of run down here    
             }
         });
@@ -1181,6 +1220,10 @@ public class simulacion extends javax.swing.JFrame {
                 
         
     }//GEN-LAST:event_MemoriaDisplayMouseClicked
+
+    private void MemoriaDisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MemoriaDisplayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MemoriaDisplayActionPerformed
 
     /**
      * @param args the command line arguments

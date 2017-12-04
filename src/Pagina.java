@@ -42,7 +42,7 @@ public class Pagina extends Thread{
     public Pagina(){
         this.id=101;
         this.idP=101;
-        this.time=1;
+        this.time=3000;
         
     }
     
@@ -56,7 +56,7 @@ public class Pagina extends Thread{
 
     @Override
     public synchronized void run() {
-        System.out.println("Ejecuto..."+ejecutado);
+        System.out.println("Ejecuto..."+this.id+"|"+this.idP);
         try {
             sleep(time);
         } catch (InterruptedException ex) {
@@ -64,7 +64,10 @@ public class Pagina extends Thread{
         }
         
         this.alert = true;
-        this.suspend();
+        
+       this.id=101;
+       this.idP=101;
+       System.out.println("Finalizo..."+this.id+"|"+this.idP);
         
     }
     

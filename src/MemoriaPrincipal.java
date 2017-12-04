@@ -38,11 +38,14 @@ public class MemoriaPrincipal {
             p = enEjecucion[i];
             return p;
         }
+        return p=new Pagina();
     }
     
     public Pagina pushPila(){
         Pagina p = pila[0];
-        for (int i = 0; i<apunPila; i++){
+        System.out.println("Apuntador de Pila Inicial = "+apunPila);
+        if(apunPila>0){
+              for (int i = 0; i<apunPila; i++){
             if (pila[i+1]!=null){
                 pila[i]= pila[i+1];
             }
@@ -51,10 +54,10 @@ public class MemoriaPrincipal {
             }
             
         }
-        if(apunPila>0){
-        this.apunPila=(apunPila-1)%pila.length;
+        this.apunPila=(apunPila-1);
+        System.out.println("ApunPila final = "+apunPila);
         }
-        System.out.println("apun pila cuando borras "+apunPila);
+        
         return p;
     }
     
