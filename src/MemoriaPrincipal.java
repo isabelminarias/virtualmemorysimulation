@@ -13,15 +13,22 @@ public class MemoriaPrincipal {
     private Pagina[] enEjecucion;
     private int apunPila = 0;
     private int apunEjec = 0; 
+    
+    
 
     public MemoriaPrincipal(int marcos) {
         this.enEjecucion = new Pagina[marcos];
         System.out.println("array de "+marcos+" marcos");
+        for (int i = 0; i<pila.length;i++){
+            pila[i] = new Pagina();
+        }
     }
     
     public void addPila(Pagina p){
         pila[apunPila] = p;
         apunPila++;
+        this.apunPila= apunPila%(pila.length);
+        System.out.println("apun pila cuando creas "+apunPila);
     }
     
     public Pagina getPaginaEjec(int i){
@@ -44,6 +51,10 @@ public class MemoriaPrincipal {
             }
             
         }
+        if(apunPila>0){
+        this.apunPila=(apunPila-1)%pila.length;
+        }
+        System.out.println("apun pila cuando borras "+apunPila);
         return p;
     }
     
@@ -63,6 +74,7 @@ public class MemoriaPrincipal {
     public void addEjec(Pagina p){
         enEjecucion[apunEjec] = p;
         apunEjec++;
+        this.apunEjec = apunEjec%enEjecucion.length;
     }
     
     public Pagina pushEjec(){
@@ -79,6 +91,20 @@ public class MemoriaPrincipal {
         return p;
     }
     
+    public boolean pilaEmpty(){
+        int e = 0;
+        for (int i = 0; i< apunPila; i++){
+            if (pila[i]==null){
+                e++;
+            }
+        }
+        if(e>0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
     public Pagina[] getPila() {
         return pila;

@@ -694,11 +694,13 @@ public class simulacion extends javax.swing.JFrame {
                 Proceso proc = new Proceso(pags,listaNumProceso);
                 //proc.display();
                 this.procesos[listaNumProceso]=proc;
+                
                 virtualMemoryArea.append(proc.getText());
                 //procesos[listaNumProceso-1]=proc;
                 for (int k = 0; k<pags.length;k++){
                     Pagina[] pila = proc.getP();
                     MP.addPila(pila[k]);
+                    System.out.println("Pagina id "+pila[k].getIdPage()+" | "+pila[k].getIdP());
                 }
         }
         
@@ -838,7 +840,7 @@ public class simulacion extends javax.swing.JFrame {
        marcosDisplay.setText(String.valueOf(marcos));
        JTextField[] marcosFields = new JTextField[m];
         System.out.println("m = "+m);
-       boolean[] avail = new boolean[m];    
+       boolean[] avail = new boolean[m];   
         System.out.println("avail length "+avail.length);
        MP.setEnEjecucion(new Pagina[marcos]);
         
@@ -1116,48 +1118,56 @@ public class simulacion extends javax.swing.JFrame {
                 System.out.println("check availability");
                 for (int i = 0; i < m; i++){
                     if (avail[i]==true){
-                        System.out.print("avail in "+i+ " |");
+                        //System.out.print("avail in "+i+ " |");
                         MP.addEjec(MP.pushPila());
                         e = MP.getEnEjecucion();
                         //System.out.println("===\n ejecutando #"+i+":");
                         //System.out.println("P #"+e[i].getIdP()+" Pag #"+e[i].getIdPage());
                         //e[i].display();
                         marcosFields[i].setText("P #"+e[i].getIdP()+" Pag #"+e[i].getIdPage());
+                        
                         avail[i]=false;
                         System.out.println("now avail i"+avail[i]);
+                        if(e[i].getIdP()==101){
+                            marcosFields[i].setText("");
+                            avail[i]=true;
+                        }
                     }
-                    System.out.println("avail i"+avail[i]);
+                    //System.out.println("avail i"+avail[i]);
                     
                 }
+                    System.out.println("end check avail");
                 
                 for(int i = 0; i<e.length; i++){
-                    System.out.print(i+" |");
+                    //System.out.print(i+" |");
                     //e[i].display();
                 }
-                System.out.println("\n elength="+e.length);
+                //System.out.println("\n elength="+e.length);
                 
                 for (int i = 0; i<e.length; i++){
-                    System.out.print("i="+i+" |");
-                    System.out.print("e is alert? "+e[i].isAlert()+" |");
-                    if(e[i].isAlert()){
-                        System.out.println("\n alert");
-                        System.out.print("i="+i+"| pag"+String.valueOf(e[i].getIdPage())+" |");
+                    //System.out.println("id del proceso "+e[i].getId());
+                    //System.out.print("i="+i+" |");
+                    //System.out.print("e is alert? "+e[i].isAlert()+" |");
+                    if(e[i]==null){
+                        //System.out.println("\n alert");
+                        //System.out.print("i="+i+"| pag"+String.valueOf(e[i].getIdPage())+" |");
                         avail[i]=true;
-                        System.out.println("avail i"+avail[i]);
-                        try {
+                        //System.out.println("avail i"+avail[i]);
+                        /*try {
                             e[i].kill();
                         } catch (InterruptedException ex) {
                             Logger.getLogger(simulacion.class.getName()).log(Level.SEVERE, null, ex);
-                        }
+                        }*/
                     }
-                    else if (!e[i].isAlive()){
+                    else if (!e[i].isAlive()&&e[i].getIdP()!=101){
+                        System.out.println("Alive?"+e[i].isAlive());
                         e[i].start();
                     }
                 }
                 
-                
+                    System.out.println("\n llego aqui");
                     try {
-                        sleep((long) (e[0].getTime()/2));
+                        sleep(1500);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(simulacion.class.getName()).log(Level.SEVERE, null, ex);
                     }

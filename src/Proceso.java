@@ -86,7 +86,13 @@ public class Proceso {
         line+="\n";
         return line;
     }
-
+    
+    public void terminateProcess() throws InterruptedException{
+        for (int i = 0; i<p.length;i++){
+            p[i].kill();
+        }
+    }
+    
     public int getPagina() {
         return pagina;
     }

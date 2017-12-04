@@ -16,7 +16,7 @@ public class Pagina extends Thread{
     private boolean[] ApunNext;
     private int ejecutado = 0;  //cuantas veces se ha ejecutado la pagina en mem principal
     private int exec;           //cuantas veces hay que ejecutarla
-    private long time = 5000; //5s
+    private long time = 6000; //2s
     private int id;
     private int idP;
     private boolean alert = false;
@@ -37,6 +37,13 @@ public class Pagina extends Thread{
         this.exec = e;
         this.id = id;
         this.idP = idP;
+    }
+    
+    public Pagina(){
+        this.id=101;
+        this.idP=101;
+        this.time=1;
+        
     }
     
     
